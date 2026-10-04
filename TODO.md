@@ -1,38 +1,31 @@
 # TODO
 
-💰 = drahé (agent / scraping), ostatní je práce nad daty, která už leží na disku.
+Stav k 4. 10. 2026. Stránka: https://gromanjakub.github.io/skoly-msk/ · přepočet: `scripts/rebuild.sh [--fetch]`
+Poznámky ke každému zdroji jsou v `notes/` (lokálně, nejsou v gitu).
 
 ## Hotovo
-- [x] Rejstřík škol (126 maturitních škol), mapa (RÚIAN)
-- [x] Pilíř A přidaná hodnota, B maturita, E zájem (CERMAT)
-- [x] Pilíř C excelence (olympiády, SOČ, Eurorebus; 98 % spárováno)
-- [x] Výňatky ČŠI v detailu školy
-- [x] Řazení podle souhrnu
+- Seznam 129 škol (rejstřík MŠMT, včetně škol jen s nástavbou)
+- Pilíře A přidaná hodnota (stažená k průměru podle spolehlivosti), B maturita, C excelence, E zájem
+- Nastavitelné váhy, filtr podle typu a oboru, řazení podle souhrnu, odkaz na školu (`#s=REDIZO-TYP`), CSV ke stažení
+- Detail školy: čísla pilířů, vývoj 2015–2026, angličtina, naplněnost, hospodaření, údaj školy o VŠ, výňatek ČŠI, historie (jen část)
+- Metodika `docs/metodika.md`; prověřené a zamítnuté zdroje: InfoAbsolvent, NPI nezaměstnanost, výroční zprávy pro D/F
 
-## Rozdělaná data (agenti zastaveni 4. 10., výstupy jsou na disku, nezkontrolované)
-- [x] `data/excelence.csv` (392 řádků): program Excelence SŠ. Zkontrolovat roky a párování, porovnat s pilířem C. Možná ho nahradí nebo zkalibruje. → `notes/excelence.md`: jen 2013–2019, r = 0,79 s pilířem C. Nebodovat.
-- [x] `data/vs_admissions_vyrocni_zpravy.csv` (272 řádků): přijetí na VŠ z výročních zpráv. Zjistit pokrytí, jestli stačí na pilíř D. → `notes/vyrocni_zpravy_D_F.md`: nestačí (11 škol, strop). Zobrazeno jako údaj školy.
-- [x] `data/finance.csv` (8 640 řádků): Monitor státní pokladny. Náklady na žáka jako kontext, nebodovat. → v detailu školy; `notes/finance_kraj.md`.
-- [x] `data/kraj_*.csv`: příspěvky, investice, rozpočet 2026, dotace soukromým školám. Investice 2022–2025 jsou v detailu školy, zbytek jen kontext (`notes/finance_kraj.md`).
-- [x] `data/raw/web/` (115 škol) + `notes/web_batch1_part0*.md`: výroční zprávy. Zjistit, co se stihlo vytáhnout (počty žáků, odchody → pilíř F). → nestačí, viz `notes/vyrocni_zpravy_D_F.md`.
+## Rozdělané (agenti zastaveni, výstupy na disku)
+1. [ ] **Historie, zbytek.** Hotovo jen MO/FO/ChO/P/EO (`data/historie_sci.csv`, 38 řádků, `notes/historie_sci.md`).
+   Stažená surová data bez výstupu: `data/raw/historie/{soc,bio,intl,zo,do}/`. Jazyky, ČJ, Eurorebus, Náboj a astronomie zatím nezačaté.
+   Po doplnění přidat soubor do `hist` v `scripts/build_site.py` a upravit poznámku v `histBlock` v `docs/index.html`.
+   Kontrola: GMK Bílovec má mít 4× vítěze FJ (asi 2015/16–2018/19, https://www.gmk.cz/mes-amis-a-mon-ami/).
+2. [ ] **Tabulky Excelence** (`excelence.nidm.cz/result-table/show/N`, ~980 snímků ve Wayback): IČO školy + umístění ve všech soutěžích. Fetcher v `scripts/historie_sci.py` skončil, když Wayback vypadl (17 uloženo).
 
-## Další kroky (podle priority)
-1. [x] Vyhodnotit rozdělaná data výše
-2. [x] Pilíř D: z veřejných dat nejde. Zbývá jen žádost podle 106/1999 (viz níže).
-3. [ ] Pilíř F: výroční zprávy nestačí. odchody z výročních zpráv; jinak od 2028 hrubý odhad (přijatí 2024 → přihlášení k maturitě)
-4. [x] Ručně: 8 nejasných názvů škol v olympiádách (`data/olymp_school_overrides.csv`): Frenštát přiřazen, 3× ZŠ, „SPŠ Ostrava" a „POJ F-M" neidentifikovatelné
-5. [x] Ověřit 28 přepsaných výsledků jazykových olympiád: 3/3 namátkově sedí, zapojeno
-6. [x] Nastavitelné váhy pilířů na stránce (posuvníky A, B, C, E; přepočítá tabulku i mapu)
-7. [x] Nejistota: přidaná hodnota stažená k průměru podle spolehlivosti N/(N+40), spolehlivost v detailu
-8. [-] ~~💰 Dosbírat výroční zprávy~~: zrušeno, D/F z nich nejdou
-9. [ ] 💰 Náboj, Astronomická olympiáda do pilíře C
-11. [ ] Žádost na MŠMT podle 106/1999 (D, F): návrh hotový v `notes/zadost_msmt.md`, musí poslat Jakub.
-10. [x] `scripts/rebuild.sh [--fetch]`: stažení základních dat a celý přepočet (ověřeno, výstup stejný)
+## Další
+3. [ ] **Žádost na MŠMT** (pilíře D a F): návrh v `notes/zadost_msmt.md`. **Posílá Jakub.**
+4. [ ] Mezery v pilíři C: jazykové olympiády před 2023/24, celé výsledky olympiády v ČJ, krajská kola EO/ZO/DO/jazyků.
+5. [ ] Konzervatoře (2) jako vlastní typ; praktické školy a učiliště (14) jako seznam bez hodnocení.
+6. [ ] Neidentifikované názvy v olympiádách: „SPŠ Ostrava" (MO krajské), „POJ Frýdek-Místek" (FO krajské).
+7. [ ] Ověřit, že `scripts/rebuild.sh --fetch` projde na čistém klonu (zatím testováno jen se staženými daty).
 
 ## Rozhodnutí
 - Repo a stránka jsou veřejné (GitHub Pages zdarma jen pro veřejné repo). Jakub to zatím nikde nesdílí.
 - Žádná jména ani iniciály žáků v repu (`data/olymp_msk*.csv` je v .gitignore).
-
-12. [ ] Sekce „Historie" (mimo hodnocení): úspěchy v celostátních kolech 2010/11–2020/21. Sbírá agent → `data/historie.csv`, `notes/historie.md`.
-13. [ ] Mezery v pilíři C: jazykové olympiády před 2023/24, celé výsledky olympiády v ČJ, krajská kola EO/ZO/DO/jazyků (viz `notes/olympiady.md`).
-14. [ ] Excelence result tables (`excelence.nidm.cz/result-table/show/N`, ~980 Wayback captures): school IČO + placement for every competition, no year. Could fill the history and matching gaps. Fetcher in `scripts/historie_sci.py`, stopped when Wayback went offline (12 saved). See `notes/historie_sci.md`.
+- Pilíř C počítá jen 2021/22–2025/26, starší úspěchy patří do historie.
+- Mapa odstraněna (k ničemu).
