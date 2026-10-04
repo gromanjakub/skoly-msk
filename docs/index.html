@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Střední školy MSK</title>
+<style>
+:root {
+  --bg: #fbfaf8; --fg: #1d1d1b; --muted: #6b6a66; --line: #e3e1dc; --card: #ffffff;
+  --accent: #2f5d8a; --ok: #2e7d4f; --warn: #a86b00; --bad: #b3403a; --pend: #8a8984;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #161615; --fg: #ecebe7; --muted: #a09f9a; --line: #2e2d2b; --card: #1f1f1d;
+    --accent: #7fb0e0; --ok: #6cc391; --warn: #e0a84a; --bad: #e57d76; --pend: #8a8984; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 1.7rem; margin: 0 0 4px; }
+h2 { font-size: 1.15rem; margin: 40px 0 12px; }
+.sub { color: var(--muted); margin: 0 0 8px; }
+.banner { border: 1px solid var(--line); border-left: 4px solid var(--warn); background: var(--card);
+  padding: 12px 14px; border-radius: 6px; margin: 20px 0; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 600; font-size: .85rem; }
+.w { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pill { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: .8rem; white-space: nowrap;
+  border: 1px solid currentColor; }
+.s-ok { color: var(--ok); } .s-partial { color: var(--warn); } .s-blocked { color: var(--bad); } .s-pending { color: var(--pend); }
+.note { color: var(--muted); font-size: .88rem; }
+ul.log { list-style: none; padding: 0; margin: 0; }
+ul.log li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+ul.log .d { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 10px; }
+.wrap { overflow-x: auto; }
+footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Střední školy v Moravskoslezském kraji</h1>
+  <p class="sub">Pilotní vícefaktorové hodnocení maturitních škol z veřejných dat</p>
+  <p class="sub" id="updated"></p>
+
+  <div class="banner"><strong>Rozpracováno.</strong> Žádné pořadí škol zatím nezveřejňujeme. Stránka se průběžně doplňuje podle toho, jaká data se podaří získat.</div>
+
+  <h2>Pilíře hodnocení</h2>
+  <p class="note">Váhy jsou výchozí návrh. Ve finální verzi si je půjde nastavit.</p>
+  <div class="wrap"><table id="pillars">
+    <thead><tr><th></th><th>Pilíř</th><th class="w">Váha</th><th>Co měří</th><th>Stav dat</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>Zásady</h2>
+  <ul>
+    <li>Školy se srovnávají jen v rámci svého typu: osmiletá, šestiletá a čtyřletá gymnázia, lycea, odborné školy podle oboru.</li>
+    <li>Jádrem je přidaná hodnota. Samotné výsledky maturity ukazují hlavně to, koho škola přijme.</li>
+    <li>Průměry za tři roky a pásma místo přesného pořadí. Malá škola se jinak rok od roku hýbe o desítky míst.</li>
+    <li>Zveřejňují se všechny dílčí ukazatele, ne jen výsledné číslo.</li>
+    <li>Nezveřejňují se jména žáků.</li>
+  </ul>
+
+  <h2>Zdroje dat</h2>
+  <div class="wrap"><table id="sources">
+    <thead><tr><th>Zdroj</th><th>K čemu</th><th>Stav</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>Změny</h2>
+  <ul class="log" id="log"></ul>
+
+  <footer>Neoficiální projekt. Data pocházejí z veřejných zdrojů uvedených výše.</footer>
+</main>
+<script>
+const LABEL = { ok: "dostupné", partial: "částečně", blocked: "nedostupné", pending: "zjišťuje se" };
+const pill = s => `<span class="pill s-${s}">${LABEL[s] || s}</span>`;
+const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmtDate = d => { const [y, m, day] = d.split("-"); return `${+day}. ${+m}. ${y}`; };
+
+fetch("status.json", { cache: "no-store" }).then(r => r.json()).then(s => {
+  document.getElementById("updated").textContent = "Aktualizováno " + fmtDate(s.updated);
+  document.querySelector("#pillars tbody").innerHTML = s.pillars.map(p =>
+    `<tr><td><strong>${esc(p.id)}</strong></td><td>${esc(p.name)}</td><td class="w">${p.weight} %</td>
+     <td>${esc(p.what)}</td><td>${pill(p.status)}<div class="note">${esc(p.note)}</div></td></tr>`).join("");
+  document.querySelector("#sources tbody").innerHTML = s.sources.map(x =>
+    `<tr><td>${esc(x.name)}</td><td>${esc(x.use)}</td><td>${pill(x.status)}${x.note ? `<div class="note">${esc(x.note)}</div>` : ""}</td></tr>`).join("");
+  document.getElementById("log").innerHTML = s.log.slice().reverse().map(l =>
+    `<li><span class="d">${fmtDate(l.date)}</span>${esc(l.text)}</li>`).join("");
+});
+</script>
+</body>
+</html>
