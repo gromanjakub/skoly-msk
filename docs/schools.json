@@ -1,0 +1,1456 @@
+[
+ {
+  "red_izo": "600016455",
+  "nazev": "Gymnázium Fr.Živného",
+  "plny_nazev": "Gymnázium Františka Živného, Bohumín, Jana Palacha 794, příspěvková organizace",
+  "obec": "Bohumín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 480
+ },
+ {
+  "red_izo": "600016668",
+  "nazev": "Střední škola",
+  "plny_nazev": "Střední škola, Bohumín, příspěvková organizace",
+  "obec": "Bohumín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 372
+ },
+ {
+  "red_izo": "600016064",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Bruntál, příspěvková organizace",
+  "obec": "Bruntál",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 853
+ },
+ {
+  "red_izo": "600016170",
+  "nazev": "SPŠ a OA",
+  "plny_nazev": "Střední průmyslová škola a Obchodní akademie, Bruntál, příspěvková organizace",
+  "obec": "Bruntál",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 840
+ },
+ {
+  "red_izo": "600016773",
+  "nazev": "Gymnázium M. Koperníka",
+  "plny_nazev": "Gymnázium Mikuláše Koperníka, Bílovec, příspěvková organizace",
+  "obec": "Bílovec",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 520
+ },
+ {
+  "red_izo": "600016854",
+  "nazev": "Střední škola",
+  "plny_nazev": "Střední škola, Odry, příspěvková organizace",
+  "obec": "Bílovec; Kopřivnice; Nový Jičín; Odry; Vítkov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 120
+ },
+ {
+  "red_izo": "600016749",
+  "nazev": "Gymnázium a SPŠ elektro. a informatiky",
+  "plny_nazev": "Gymnázium a Střední průmyslová škola elektrotechniky a informatiky, Frenštát pod Radhoštěm, příspěvková organizace",
+  "obec": "Frenštát pod Radhoštěm",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4",
+   "SOŠ"
+  ],
+  "kapacita": 960
+ },
+ {
+  "red_izo": "600171256",
+  "nazev": "Hotelová škola",
+  "plny_nazev": "Hotelová škola, Frenštát pod Radhoštěm, příspěvková organizace",
+  "obec": "Frenštát pod Radhoštěm",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 370
+ },
+ {
+  "red_izo": "600016234",
+  "nazev": "Gymnázium Cihelní",
+  "plny_nazev": "Gymnázium Cihelní, Frýdek-Místek, příspěvková organizace",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 540
+ },
+ {
+  "red_izo": "600016315",
+  "nazev": "Gymnázium Petra Bezruče",
+  "plny_nazev": "Gymnázium Petra Bezruče, Frýdek-Místek, příspěvková organizace",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G6"
+  ],
+  "kapacita": 540
+ },
+ {
+  "red_izo": "600016358",
+  "nazev": "PrimMat - Soukr. SŠ podnikatelská s.r.o.",
+  "plny_nazev": "PrimMat - Soukromá střední škola podnikatelská, s.r.o.",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 220
+ },
+ {
+  "red_izo": "680000062",
+  "nazev": "SOŠ požár. ochrany a VOŠ požár. ochrany",
+  "plny_nazev": "Střední odborná škola požární ochrany a Vyšší odborná škola požární ochrany",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "jiný ústřední orgán",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 0
+ },
+ {
+  "red_izo": "600016323",
+  "nazev": "SPŠ, OA a JŠ s PSJZ",
+  "plny_nazev": "Střední průmyslová škola, Obchodní akademie a Jazyková škola s právem státní jazykové zkoušky, Frýdek-Místek, příspěvková organizace",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 1332
+ },
+ {
+  "red_izo": "600016412",
+  "nazev": "Soukromá SOŠ Frýdek-Místek, s.r.o",
+  "plny_nazev": "Soukromá střední odborná škola Frýdek-Místek, s.r.o.",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 240
+ },
+ {
+  "red_izo": "600171191",
+  "nazev": "Střední odborná škola",
+  "plny_nazev": "Střední odborná škola, Frýdek-Místek, příspěvková organizace",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 505
+ },
+ {
+  "red_izo": "600016331",
+  "nazev": "Střední uměleckoprůmyslová škola s.r.o.",
+  "plny_nazev": "Střední uměleckoprůmyslová škola s.r.o.",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 120
+ },
+ {
+  "red_izo": "600020011",
+  "nazev": "Střední zdravotnická škola",
+  "plny_nazev": "Střední zdravotnická škola, Frýdek-Místek, příspěvková organizace",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 370
+ },
+ {
+  "red_izo": "600016242",
+  "nazev": "Střední škola gastro., oděv. a služeb",
+  "plny_nazev": "Střední škola gastronomie, oděvnictví a služeb, Frýdek-Místek, příspěvková organizace",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 740
+ },
+ {
+  "red_izo": "600016374",
+  "nazev": "Střední škola inform.technologií, s.r.o.",
+  "plny_nazev": "Střední škola informačních technologií, s.r.o.",
+  "obec": "Frýdek-Místek",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 360
+ },
+ {
+  "red_izo": "600016307",
+  "nazev": "Střední škola řemesel",
+  "plny_nazev": "Střední škola řemesel, Frýdek-Místek, příspěvková organizace",
+  "obec": "Frýdek-Místek; Frýdlant nad Ostravicí",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 360
+ },
+ {
+  "red_izo": "600016447",
+  "nazev": "PRIGO, gymnázium 8leté a 4leté, s.r.o.",
+  "plny_nazev": "PRIGO, gymnázium 8leté a 4leté, s.r.o.",
+  "obec": "Frýdek-Místek; Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 400
+ },
+ {
+  "red_izo": "600016251",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Frýdlant nad Ostravicí, nám. T. G. Masaryka 1260, příspěvková organizace",
+  "obec": "Frýdlant nad Ostravicí",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G6",
+   "G4"
+  ],
+  "kapacita": 360
+ },
+ {
+  "red_izo": "650007557",
+  "nazev": "Gymnázium BMA, s.r.o.",
+  "plny_nazev": "Gymnázium BESKYDY MOUNTAIN ACADEMY, s.r.o.",
+  "obec": "Frýdlant nad Ostravicí",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G4"
+  ],
+  "kapacita": 200
+ },
+ {
+  "red_izo": "600016471",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Havířov-Město, Komenského 2, příspěvková organizace",
+  "obec": "Havířov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 730
+ },
+ {
+  "red_izo": "600016684",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Havířov-Podlesí, příspěvková organizace",
+  "obec": "Havířov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 864
+ },
+ {
+  "red_izo": "600016641",
+  "nazev": "Hotelová škola a Obchodní akademie s.r.o",
+  "plny_nazev": "Hotelová škola a Obchodní akademie Havířov s.r.o.",
+  "obec": "Havířov",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 621
+ },
+ {
+  "red_izo": "600016579",
+  "nazev": "SPŠ elektrotechnická",
+  "plny_nazev": "Střední průmyslová škola elektrotechnická, Havířov, příspěvková organizace",
+  "obec": "Havířov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 510
+ },
+ {
+  "red_izo": "600016552",
+  "nazev": "SPŠ stavební",
+  "plny_nazev": "Střední průmyslová škola stavební, Havířov, příspěvková organizace",
+  "obec": "Havířov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 360
+ },
+ {
+  "red_izo": "600171230",
+  "nazev": "Střední škola",
+  "plny_nazev": "Střední škola, Havířov-Prostřední Suchá, příspěvková organizace",
+  "obec": "Havířov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 476
+ },
+ {
+  "red_izo": "600016510",
+  "nazev": "Střední škola polytechnická",
+  "plny_nazev": "Střední škola polytechnická, Havířov-Šumbark, příspěvková organizace",
+  "obec": "Havířov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 600
+ },
+ {
+  "red_izo": "600171205",
+  "nazev": "SŠ technických oborů",
+  "plny_nazev": "Střední škola technických oborů, Havířov-Šumbark, Lidická 1a/600, příspěvková organizace",
+  "obec": "Havířov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 540
+ },
+ {
+  "red_izo": "600016633",
+  "nazev": "Střední odborné učiliště DAKOL, s.r.o.",
+  "plny_nazev": "Střední odborné učiliště DAKOL, s. r. o.",
+  "obec": "Havířov; Orlová; Petrovice u Karviné",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 340
+ },
+ {
+  "red_izo": "600016625",
+  "nazev": "VOŠ DAKOL a Střední škola DAKOL, o.p.s.",
+  "plny_nazev": "Vyšší odborná škola DAKOL a Střední škola DAKOL, o.p.s.",
+  "obec": "Havířov; Orlová; Petrovice u Karviné",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 400
+ },
+ {
+  "red_izo": "600017249",
+  "nazev": "Gymnázium Josefa Kainara",
+  "plny_nazev": "Gymnázium Josefa Kainara, Hlučín, příspěvková organizace",
+  "obec": "Hlučín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G6",
+   "G4"
+  ],
+  "kapacita": 360
+ },
+ {
+  "red_izo": "600017591",
+  "nazev": "PRIGO, gymnázium 6leté a 4leté, s.r.o.",
+  "plny_nazev": "PRIGO, gymnázium 6leté a 4leté, s.r.o.",
+  "obec": "Hnojník; Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G6",
+   "G4"
+  ],
+  "kapacita": 430
+ },
+ {
+  "red_izo": "600171183",
+  "nazev": "Střední škola",
+  "plny_nazev": "Střední škola, Jablunkov, příspěvková organizace",
+  "obec": "Jablunkov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 240
+ },
+ {
+  "red_izo": "610450671",
+  "nazev": "Akademie ped., soc. a hot. - SOŠ, s.r.o.",
+  "plny_nazev": "Akademie pedagogiky, sociální činnosti a hotelnictví - Střední odborná škola, s.r.o.",
+  "obec": "Karviná",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 830
+ },
+ {
+  "red_izo": "600016480",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Karviná, příspěvková organizace",
+  "obec": "Karviná",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 830
+ },
+ {
+  "red_izo": "600016676",
+  "nazev": "Střední průmyslová škola",
+  "plny_nazev": "Střední průmyslová škola, Karviná, příspěvková organizace",
+  "obec": "Karviná",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 721
+ },
+ {
+  "red_izo": "600020029",
+  "nazev": "Střední zdravotnická škola",
+  "plny_nazev": "Střední zdravotnická škola, Karviná, příspěvková organizace",
+  "obec": "Karviná",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 590
+ },
+ {
+  "red_izo": "600171248",
+  "nazev": "Střední škola techniky a služeb",
+  "plny_nazev": "Střední škola techniky a služeb, Karviná, příspěvková organizace",
+  "obec": "Karviná",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 602
+ },
+ {
+  "red_izo": "600016617",
+  "nazev": "Obchodní akademie a Česko - anglická ZŠ s.r.o.",
+  "plny_nazev": "Obchodní akademie a Česko - anglická základní škola s.r.o.",
+  "obec": "Karviná; Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 480
+ },
+ {
+  "red_izo": "600016706",
+  "nazev": "SOŠ ochrany osob a majetku s.r.o.",
+  "plny_nazev": "Střední odborná škola ochrany osob a majetku s.r.o.",
+  "obec": "Karviná; Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 408
+ },
+ {
+  "red_izo": "600016862",
+  "nazev": "Střední škola podnikatelská",
+  "plny_nazev": "Střední škola podnikatelská Klimkovice s.r.o.",
+  "obec": "Klimkovice",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 264
+ },
+ {
+  "red_izo": "600016781",
+  "nazev": "SŠ a VOŠ Kopřivnice",
+  "plny_nazev": "Střední škola a Vyšší odborná škola, Kopřivnice, příspěvková organizace",
+  "obec": "Kopřivnice",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 480
+ },
+ {
+  "red_izo": "600016056",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Krnov, příspěvková organizace",
+  "obec": "Krnov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 480
+ },
+ {
+  "red_izo": "600171167",
+  "nazev": "SOŠ dopravy a cest. ruchu",
+  "plny_nazev": "Střední odborná škola dopravy a cestovního ruchu, Krnov, příspěvková organizace",
+  "obec": "Krnov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 500
+ },
+ {
+  "red_izo": "600016099",
+  "nazev": "SPgŠ a SZdŠ",
+  "plny_nazev": "Střední pedagogická škola a Střední zdravotnická škola, Krnov, příspěvková organizace",
+  "obec": "Krnov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 610
+ },
+ {
+  "red_izo": "600016081",
+  "nazev": "Střední umělecká škola varhanářská,o.p.s",
+  "plny_nazev": "Střední umělecká škola varhanářská o.p.s.",
+  "obec": "Krnov",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 90
+ },
+ {
+  "red_izo": "600016145",
+  "nazev": "Střední škola průmyslová",
+  "plny_nazev": "Střední škola průmyslová, Krnov, příspěvková organizace",
+  "obec": "Krnov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 1036
+ },
+ {
+  "red_izo": "600016901",
+  "nazev": "EDUCA - SOŠ, s.r.o.",
+  "plny_nazev": "EDUCA - Střední odborná škola, s.r.o.",
+  "obec": "Nový Jičín",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 340
+ },
+ {
+  "red_izo": "600016820",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Nový Jičín, příspěvková organizace",
+  "obec": "Nový Jičín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G6",
+   "G4"
+  ],
+  "kapacita": 480
+ },
+ {
+  "red_izo": "600020037",
+  "nazev": "Mendelova střední škola",
+  "plny_nazev": "Mendelova střední škola, Nový Jičín, příspěvková organizace",
+  "obec": "Nový Jičín; Šenov u Nového Jičína",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 1221
+ },
+ {
+  "red_izo": "600016846",
+  "nazev": "Střední škola technická a zemědělská",
+  "plny_nazev": "Střední škola technická a zemědělská, Nový Jičín, příspěvková organizace",
+  "obec": "Nový Jičín; Šenov u Nového Jičína",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 510
+ },
+ {
+  "red_izo": "600016838",
+  "nazev": "SPgŠ a SZdŠ svaté Anežky České",
+  "plny_nazev": "Střední pedagogická škola a Střední zdravotnická škola svaté Anežky České",
+  "obec": "Odry",
+  "zrizovatel": "církev",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 480
+ },
+ {
+  "red_izo": "600017036",
+  "nazev": "CÍRKEVNÍ GYMNÁZIUM NĚMECKÉHO ŘÁDU",
+  "plny_nazev": "CÍRKEVNÍ GYMNÁZIUM NĚMECKÉHO ŘÁDU",
+  "obec": "Opava",
+  "zrizovatel": "církev",
+  "typy": [
+   "G8",
+   "G4",
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 540
+ },
+ {
+  "red_izo": "600017311",
+  "nazev": "Masarykova střední škola",
+  "plny_nazev": "Masarykova střední škola zemědělská a přírodovědná, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 600
+ },
+ {
+  "red_izo": "600017320",
+  "nazev": "Mendelovo gymnázium",
+  "plny_nazev": "Mendelovo gymnázium, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 1320
+ },
+ {
+  "red_izo": "600017257",
+  "nazev": "OA a SOŠ logistická",
+  "plny_nazev": "Obchodní akademie a Střední odborná škola logistická, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 1272
+ },
+ {
+  "red_izo": "600017419",
+  "nazev": "SOU stavební",
+  "plny_nazev": "Střední odborné učiliště stavební, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 240
+ },
+ {
+  "red_izo": "600017265",
+  "nazev": "Slezské gymnázium",
+  "plny_nazev": "Slezské gymnázium, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G4"
+  ],
+  "kapacita": 510
+ },
+ {
+  "red_izo": "600017401",
+  "nazev": "Soukr.střední škola podnikatelská s.r.o.",
+  "plny_nazev": "Soukromá střední škola podnikatelská, s.r.o., Opava",
+  "obec": "Opava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 289
+ },
+ {
+  "red_izo": "600017290",
+  "nazev": "Soukromá obchodní akademie Opava s.r.o.",
+  "plny_nazev": "Soukromá obchodní akademie Opava s.r.o.",
+  "obec": "Opava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 252
+ },
+ {
+  "red_izo": "600017389",
+  "nazev": "Střední průmyslová škola stavební",
+  "plny_nazev": "Střední průmyslová škola stavební, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 758
+ },
+ {
+  "red_izo": "600020061",
+  "nazev": "Střední zdravotnická škola",
+  "plny_nazev": "Střední zdravotnická škola, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 460
+ },
+ {
+  "red_izo": "600017338",
+  "nazev": "Střední škola průmyslová a umělecká",
+  "plny_nazev": "Střední škola průmyslová a umělecká, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 499
+ },
+ {
+  "red_izo": "600171868",
+  "nazev": "Střední škola technická",
+  "plny_nazev": "Střední škola technická, Opava, Kolofíkovo nábřeží 51, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 554
+ },
+ {
+  "red_izo": "691002932",
+  "nazev": "SŠ hotelnictví a služeb a VOŠ",
+  "plny_nazev": "Střední škola hotelnictví a služeb a Vyšší odborná škola, Opava, příspěvková organizace",
+  "obec": "Opava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 710
+ },
+ {
+  "red_izo": "650078331",
+  "nazev": "Gymnázium Jana Šabršuly s.r.o.",
+  "plny_nazev": "Gymnázium Jana Šabršuly s.r.o.",
+  "obec": "Orlová",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G4"
+  ],
+  "kapacita": 180
+ },
+ {
+  "red_izo": "600016536",
+  "nazev": "Gymnázium a Obchodní akademie",
+  "plny_nazev": "Gymnázium a Obchodní akademie, Orlová, příspěvková organizace",
+  "obec": "Orlová",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4",
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 940
+ },
+ {
+  "red_izo": "600016587",
+  "nazev": "SOŠ NET OFFICE Orlová, spol. s r.o.",
+  "plny_nazev": "Střední odborná škola NET OFFICE Orlová, spol. s r.o.",
+  "obec": "Orlová",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 131
+ },
+ {
+  "red_izo": "650076991",
+  "nazev": "1st IS of Ostrava - mez.gymnázium,s.r.o.",
+  "plny_nazev": "1st International School of Ostrava - mezinárodní gymnázium, s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 360
+ },
+ {
+  "red_izo": "600017664",
+  "nazev": "AHOL - Střední odborná škola, s.r.o.",
+  "plny_nazev": "AHOL - Střední odborná škola, s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 562
+ },
+ {
+  "red_izo": "651035759",
+  "nazev": "AHOL-SŠ gastronomie, turismu a lázeňství",
+  "plny_nazev": "AHOL - Střední škola gastronomie, turismu a lázeňství",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 338
+ },
+ {
+  "red_izo": "650003551",
+  "nazev": "AVE ART Ostrava, VOŠ, SUŠ a ZUŠ",
+  "plny_nazev": "AVE ART Ostrava, vyšší odborná škola, střední umělecká škola a základní umělecká škola, s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 216
+ },
+ {
+  "red_izo": "600017729",
+  "nazev": "BPA Ostrava, s. r. o., střední škola",
+  "plny_nazev": "Bezpečnostně právní akademie Ostrava, s. r. o., střední škola",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 318
+ },
+ {
+  "red_izo": "600017541",
+  "nazev": "Biskupské gymnázium v Ostravě",
+  "plny_nazev": "Biskupské gymnázium v Ostravě",
+  "obec": "Ostrava",
+  "zrizovatel": "církev",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 420
+ },
+ {
+  "red_izo": "600017451",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Ostrava-Hrabůvka, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 630
+ },
+ {
+  "red_izo": "600017486",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Ostrava-Zábřeh, Volgogradská 6a, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8"
+  ],
+  "kapacita": 500
+ },
+ {
+  "red_izo": "600016366",
+  "nazev": "Gymnázium EDUCAnet Ostrava s.r.o.",
+  "plny_nazev": "Gymnázium EDUCAnet Ostrava s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G4"
+  ],
+  "kapacita": 160
+ },
+ {
+  "red_izo": "600017494",
+  "nazev": "Gymnázium Hladnov a JŠ s právem SJZ",
+  "plny_nazev": "Gymnázium Hladnov a Jazyková škola s právem státní jazykové zkoušky, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G6",
+   "G4"
+  ],
+  "kapacita": 590
+ },
+ {
+  "red_izo": "600017478",
+  "nazev": "Gymnázium Olgy Havlové",
+  "plny_nazev": "Gymnázium Olgy Havlové, Ostrava-Poruba, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 768
+ },
+ {
+  "red_izo": "691000565",
+  "nazev": "Gymnázium, ZŠ a MŠ Hello s.r.o.",
+  "plny_nazev": "Gymnázium, základní škola a mateřská škola Hello s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G4"
+  ],
+  "kapacita": 256
+ },
+ {
+  "red_izo": "600171272",
+  "nazev": "Hotelová škola, Ostrava, příspěvková organizace",
+  "plny_nazev": "Hotelová škola, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 240
+ },
+ {
+  "red_izo": "650077393",
+  "nazev": "IUVENTAS-Soukr.gymnázium a SOŠ s.r.o.",
+  "plny_nazev": "IUVENTAS - Soukromé gymnázium a Střední odborná škola s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G8",
+   "G4",
+   "lyceum"
+  ],
+  "kapacita": 800
+ },
+ {
+  "red_izo": "600017443",
+  "nazev": "Jazykové gymnázium Pavla Tigrida",
+  "plny_nazev": "Jazykové gymnázium Pavla Tigrida, Ostrava-Poruba, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G6",
+   "G4"
+  ],
+  "kapacita": 672
+ },
+ {
+  "red_izo": "600017508",
+  "nazev": "Matiční gymnázium",
+  "plny_nazev": "Matiční gymnázium, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 628
+ },
+ {
+  "red_izo": "600016595",
+  "nazev": "Moravskoslezská OA, s.r.o.",
+  "plny_nazev": "Moravskoslezská obchodní akademie, s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 120
+ },
+ {
+  "red_izo": "600017672",
+  "nazev": "OA a VOŠ sociálně právní",
+  "plny_nazev": "Obchodní akademie a Vyšší odborná škola sociálně právní, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 1020
+ },
+ {
+  "red_izo": "600017460",
+  "nazev": "Obchodní akademie",
+  "plny_nazev": "Obchodní akademie, Ostrava-Poruba, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 910
+ },
+ {
+  "red_izo": "600006018",
+  "nazev": "PORG - gymnázium, ZŠ a MŠ, o.p.s.",
+  "plny_nazev": "PORG - gymnázium, základní škola a mateřská škola, o.p.s.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G8",
+   "G6",
+   "G4",
+   "SOŠ"
+  ],
+  "kapacita": 2694
+ },
+ {
+  "red_izo": "600017567",
+  "nazev": "PRIGO, střední škola, s.r.o.",
+  "plny_nazev": "PRIGO, střední škola, s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 384
+ },
+ {
+  "red_izo": "600017532",
+  "nazev": "SOŠ umělecká a gymnázium, s.r.o.",
+  "plny_nazev": "Střední odborná škola umělecká a gymnázium, s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "G4",
+   "SOŠ"
+  ],
+  "kapacita": 276
+ },
+ {
+  "red_izo": "600017583",
+  "nazev": "SPŠ elektrotechniky a informatiky",
+  "plny_nazev": "Střední průmyslová škola elektrotechniky a informatiky, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 760
+ },
+ {
+  "red_izo": "600017681",
+  "nazev": "SPŠ stavební",
+  "plny_nazev": "Střední průmyslová škola stavební, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 850
+ },
+ {
+  "red_izo": "600017753",
+  "nazev": "SPŠCH akademika Heyrovského",
+  "plny_nazev": "Střední průmyslová škola chemická akademika Heyrovského, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 496
+ },
+ {
+  "red_izo": "600020070",
+  "nazev": "SZdŠ a VOŠ zdravotnická Ostrava",
+  "plny_nazev": "Střední zdravotnická škola a Vyšší odborná škola zdravotnická, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 870
+ },
+ {
+  "red_izo": "600017516",
+  "nazev": "Sportovní gymnázium D. a  E. Zátopkových",
+  "plny_nazev": "Sportovní gymnázium Dany a Emila Zátopkových, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 660
+ },
+ {
+  "red_izo": "600017699",
+  "nazev": "Střední průmyslová škola",
+  "plny_nazev": "Střední průmyslová škola, Ostrava-Vítkovice, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 600
+ },
+ {
+  "red_izo": "600017630",
+  "nazev": "Střední umělecká škola",
+  "plny_nazev": "Střední umělecká škola, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 280
+ },
+ {
+  "red_izo": "600017737",
+  "nazev": "Střední zahradnická škola",
+  "plny_nazev": "Střední zahradnická škola, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 365
+ },
+ {
+  "red_izo": "691018634",
+  "nazev": "Střední škola Montessori lyceum Ostrava",
+  "plny_nazev": "Střední škola Montessori lyceum Ostrava",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "lyceum"
+  ],
+  "kapacita": 120
+ },
+ {
+  "red_izo": "600171302",
+  "nazev": "Střední škola elektrotechnická",
+  "plny_nazev": "Střední škola elektrotechnická, Ostrava, Na Jízdárně 30, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 495
+ },
+ {
+  "red_izo": "600026957",
+  "nazev": "Střední škola prof. Zdeňka Matějčka",
+  "plny_nazev": "Střední škola prof. Zdeňka Matějčka, Ostrava-Poruba, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 598
+ },
+ {
+  "red_izo": "600171299",
+  "nazev": "Střední škola služeb a podnikání",
+  "plny_nazev": "Střední škola služeb a podnikání, Ostrava-Poruba, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 576
+ },
+ {
+  "red_izo": "600171311",
+  "nazev": "Střední škola technická a dopravní",
+  "plny_nazev": "Střední škola technická a dopravní, Ostrava-Vítkovice, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 600
+ },
+ {
+  "red_izo": "600017656",
+  "nazev": "Střední škola teleinformatiky",
+  "plny_nazev": "Střední škola teleinformatiky, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 560
+ },
+ {
+  "red_izo": "600017711",
+  "nazev": "Střední škola uměleckých řemesel, s.r.o.",
+  "plny_nazev": "Střední škola uměleckých řemesel, s.r.o.",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 238
+ },
+ {
+  "red_izo": "600017702",
+  "nazev": "SŠ stavební a dřevozpracující",
+  "plny_nazev": "Střední škola stavební a dřevozpracující, Ostrava, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 96
+ },
+ {
+  "red_izo": "651040060",
+  "nazev": "SŠ, ZŠ a MŠ Monty School",
+  "plny_nazev": "Střední škola, základní škola a mateřská škola Monty School",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "lyceum"
+  ],
+  "kapacita": 80
+ },
+ {
+  "red_izo": "650069021",
+  "nazev": "VÍTKOVICKÁ SPŠ",
+  "plny_nazev": "VÍTKOVICKÁ STŘEDNÍ PRŮMYSLOVÁ ŠKOLA",
+  "obec": "Ostrava",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 1180
+ },
+ {
+  "red_izo": "600144933",
+  "nazev": "Waldorfská ZŠ a SŠ",
+  "plny_nazev": "Waldorfská základní škola a střední škola, Ostrava-Poruba, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "obec",
+  "typy": [
+   "lyceum"
+  ],
+  "kapacita": 136
+ },
+ {
+  "red_izo": "600017648",
+  "nazev": "Wichterlovo gymnázium",
+  "plny_nazev": "Wichterlovo gymnázium, Ostrava-Poruba, příspěvková organizace",
+  "obec": "Ostrava",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 840
+ },
+ {
+  "red_izo": "691010366",
+  "nazev": "AGEL SZdzrŠ a VOŠ zdravotnická s.r.o.",
+  "plny_nazev": "AGEL Střední zdravotnická škola a Vyšší odborná škola zdravotnická s.r.o.",
+  "obec": "Ostrava; Český Těšín",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 500
+ },
+ {
+  "red_izo": "600016714",
+  "nazev": "Masarykovo gymnázium",
+  "plny_nazev": "Masarykovo gymnázium, Příbor, příspěvková organizace",
+  "obec": "Příbor",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 512
+ },
+ {
+  "red_izo": "600016188",
+  "nazev": "Gymnázium a SOŠ",
+  "plny_nazev": "Gymnázium a Střední odborná škola, Rýmařov, příspěvková organizace",
+  "obec": "Rýmařov",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4",
+   "SOŠ"
+  ],
+  "kapacita": 640
+ },
+ {
+  "red_izo": "600016803",
+  "nazev": "Střední škola ekon.-podnikatel., o.p.s.",
+  "plny_nazev": "Střední škola ekonomicko-podnikatelská Studénka, o.p.s.",
+  "obec": "Studénka",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 180
+ },
+ {
+  "red_izo": "600016269",
+  "nazev": "Gymnázium",
+  "plny_nazev": "Gymnázium, Třinec, příspěvková organizace",
+  "obec": "Třinec",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G6",
+   "G4"
+  ],
+  "kapacita": 800
+ },
+ {
+  "red_izo": "691000662",
+  "nazev": "Střední průmyslová škola Třineckých železáren",
+  "plny_nazev": "Střední průmyslová škola Třineckých železáren",
+  "obec": "Třinec",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 420
+ },
+ {
+  "red_izo": "600016340",
+  "nazev": "TŘINECKÁ OBCHODNÍ AKADEMIE IT a VS",
+  "plny_nazev": "TŘINECKÁ OBCHODNÍ AKADEMIE INFORMAČNÍCH TECHNOLOGIÍ A VEŘEJNÉ SPRÁVY, s.r.o.",
+  "obec": "Třinec",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 370
+ },
+ {
+  "red_izo": "600143074",
+  "nazev": "Základní škola a gymnázium",
+  "plny_nazev": "Základní škola a gymnázium Vítkov, příspěvková organizace",
+  "obec": "Vítkov",
+  "zrizovatel": "obec",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 360
+ },
+ {
+  "red_izo": "600171213",
+  "nazev": "Albrechtova střední škola",
+  "plny_nazev": "Albrechtova střední škola, Český Těšín, příspěvková organizace",
+  "obec": "Český Těšín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "SOŠ"
+  ],
+  "kapacita": 630
+ },
+ {
+  "red_izo": "600016463",
+  "nazev": "Gymnázium Josefa Božka",
+  "plny_nazev": "Gymnázium Josefa Božka, Český Těšín, příspěvková organizace",
+  "obec": "Český Těšín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G8",
+   "G4"
+  ],
+  "kapacita": 792
+ },
+ {
+  "red_izo": "600016609",
+  "nazev": "Obchodní akademie",
+  "plny_nazev": "Obchodní akademie, Český Těšín, příspěvková organizace",
+  "obec": "Český Těšín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 998
+ },
+ {
+  "red_izo": "600016501",
+  "nazev": "Polské gymnázium - Polskie Gimnazjum",
+  "plny_nazev": "Polské gymnázium - Polskie Gimnazjum im. Juliusza Słowackiego, Český Těšín, příspěvková organizace",
+  "obec": "Český Těšín",
+  "zrizovatel": "kraj",
+  "typy": [
+   "G4"
+  ],
+  "kapacita": 540
+ },
+ {
+  "red_izo": "600017346",
+  "nazev": "Střední škola HGS SČMSD, s.r.o.",
+  "plny_nazev": "Střední škola hotelnictví, gastronomie a služeb SČMSD Šilheřovice, s.r.o.",
+  "obec": "Šilheřovice",
+  "zrizovatel": "soukromý",
+  "typy": [
+   "lyceum",
+   "SOŠ"
+  ],
+  "kapacita": 480
+ }
+]

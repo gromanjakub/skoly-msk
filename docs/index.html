@@ -34,6 +34,14 @@ ul.log { list-style: none; padding: 0; margin: 0; }
 ul.log li { padding: 6px 0; border-bottom: 1px solid var(--line); }
 ul.log .d { color: var(--muted); font-variant-numeric: tabular-nums; margin-right: 10px; }
 .wrap { overflow-x: auto; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+.filters input { flex: 1 1 220px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 6px;
+  background: var(--card); color: var(--fg); font: inherit; }
+.chip { padding: 4px 10px; border: 1px solid var(--line); border-radius: 99px; background: var(--card);
+  color: var(--fg); font: inherit; font-size: .85rem; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.tag { display: inline-block; font-size: .78rem; padding: 0 6px; margin: 1px 2px 1px 0; border-radius: 4px;
+  background: var(--line); white-space: nowrap; }
 footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
 </style>
 </head>
@@ -60,6 +68,18 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
     <li>Zveřejňují se všechny dílčí ukazatele, ne jen výsledné číslo.</li>
     <li>Nezveřejňují se jména žáků.</li>
   </ul>
+
+  <h2>Školy v pilotu</h2>
+  <p class="note">Všechny střední školy s maturitním oborem, které vyučují v MSK, podle rejstříku MŠMT. Abecedně podle obce, nejde o pořadí.</p>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Hledat školu nebo obec" aria-label="Hledat">
+    <span id="chips"></span>
+  </div>
+  <p class="note" id="count"></p>
+  <div class="wrap"><table id="schools">
+    <thead><tr><th>Škola</th><th>Obec</th><th>Typ</th><th>Zřizovatel</th><th class="w">Kapacita</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
 
   <h2>Zdroje dat</h2>
   <div class="wrap"><table id="sources">
@@ -88,6 +108,32 @@ fetch("status.json", { cache: "no-store" }).then(r => r.json()).then(s => {
   document.getElementById("log").innerHTML = s.log.slice().reverse().map(l =>
     `<li><span class="d">${fmtDate(l.date)}</span>${esc(l.text)}</li>`).join("");
 });
+
+const TYPES = ["G8", "G6", "G4", "lyceum", "SOŠ"];
+let schools = [], active = new Set();
+const fold = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+function renderSchools() {
+  const q = fold(document.getElementById("q").value.trim());
+  const rows = schools.filter(s =>
+    (!q || fold(s.plny_nazev + " " + s.obec).includes(q)) &&
+    (!active.size || s.typy.some(t => active.has(t))));
+  document.getElementById("count").textContent = `Zobrazeno ${rows.length} z ${schools.length} škol`;
+  document.querySelector("#schools tbody").innerHTML = rows.map(s =>
+    `<tr><td title="${esc(s.plny_nazev)}">${esc(s.nazev)}</td><td>${esc(s.obec)}</td>
+     <td>${s.typy.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</td>
+     <td>${esc(s.zrizovatel)}</td><td class="w">${s.kapacita || "–"}</td></tr>`).join("");
+}
+document.getElementById("chips").innerHTML = TYPES.map(t =>
+  `<button class="chip" aria-pressed="false" data-t="${t}">${t}</button>`).join("");
+document.getElementById("chips").addEventListener("click", e => {
+  const b = e.target.closest(".chip"); if (!b) return;
+  const t = b.dataset.t, on = !active.has(t);
+  on ? active.add(t) : active.delete(t);
+  b.setAttribute("aria-pressed", on);
+  renderSchools();
+});
+document.getElementById("q").addEventListener("input", renderSchools);
+fetch("schools.json", { cache: "no-store" }).then(r => r.json()).then(d => { schools = d; renderSchools(); });
 </script>
 </body>
 </html>

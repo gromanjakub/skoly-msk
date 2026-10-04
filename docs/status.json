@@ -22,16 +22,16 @@
       "name": "Excelence",
       "weight": 15,
       "what": "Úspěchy v celostátních kolech olympiád, SOČ a Eurorebusu na 100 žáků",
-      "status": "pending",
-      "note": "Sbírají se výsledkové listiny"
+      "status": "partial",
+      "note": "1 546 výsledků z 20 soutěží za 2021/22–2025/26 včetně krajských kol MO, FO, ChO, BiO a informatiky. Zbývá ručně přiřadit asi 50 názvů škol. Jazykové olympiády a dějepis jen zčásti."
     },
     {
       "id": "D",
       "name": "Kam absolventi jdou",
       "weight": 15,
       "what": "Přijetí na VŠ; u odborných škol nezaměstnanost absolventů",
-      "status": "pending",
-      "note": "Zjišťuje se"
+      "status": "blocked",
+      "note": "Přijetí na VŠ po školách veřejně není. Nezaměstnanost absolventů NPI zveřejňuje jen po krajích a oborech, ne po školách."
     },
     {
       "id": "E",
@@ -46,15 +46,16 @@
       "name": "Udržení žáků",
       "weight": 10,
       "what": "Podíl nastoupivšího ročníku, který dojde k maturitě v řádném termínu",
-      "status": "pending",
-      "note": "Zjišťuje se"
+      "status": "blocked",
+      "note": "Počty žáků po ročnících se po školách nezveřejňují. Hrubý odhad půjde od roku 2028 z počtu přijatých (2024) a přihlášených k maturitě."
     }
   ],
   "sources": [
     {
       "name": "Rejstřík škol MŠMT",
       "use": "Seznam škol v kraji, obory, identifikátory",
-      "status": "pending"
+      "status": "ok",
+      "note": "Otevřená data, licence CC0, měsíční aktualizace. 142 středních škol vyučujících v MSK, z toho 126 s maturitou."
     },
     {
       "name": "CERMAT – maturita po školách",
@@ -71,17 +72,26 @@
     {
       "name": "Olympiády, SOČ, Eurorebus",
       "use": "Pilíř C",
-      "status": "pending"
+      "status": "partial",
+      "note": "Nejlépe chemie, biologie, fyzika, informatika, matematika a SOČ. Jazykové olympiády jen jako obrázky a skeny, web dějepisné olympiády zaplavil spam."
     },
     {
       "name": "NPI – nezaměstnanost absolventů",
       "use": "Pilíř D",
-      "status": "pending"
+      "status": "blocked",
+      "note": "Jen kraj × obor, ne po školách. Použitelné nanejvýš jako kontext."
     },
     {
       "name": "ČŠI – inspekční zprávy",
       "use": "Kvalitativní kontext, nebodováno",
-      "status": "pending"
+      "status": "ok",
+      "note": "Zprávy dohledatelné pro 140 ze 142 škol. Volný text bez hodnocení."
+    },
+    {
+      "name": "InfoAbsolvent",
+      "use": "Pilíř E (uchazeči na místo po oborech)",
+      "status": "pending",
+      "note": "Ověřeno na jedné škole, zatím nestaženo."
     }
   ],
   "log": [
@@ -92,6 +102,10 @@
     {
       "date": "2026-10-04",
       "text": "CERMAT: maturita i přijímačky jsou po školách volně ke stažení. Pilíř B pokrytý, A a E částečně."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "Rejstřík škol, olympiády a ČŠI zpracovány. Pilíře D a F z veřejných dat zatím nejdou. Přidán seznam 126 maturitních škol v pilotu."
     }
   ]
 }
