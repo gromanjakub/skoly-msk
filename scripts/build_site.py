@@ -99,7 +99,8 @@ for rid, r in reg.items():
     t = [lab for flag, lab in (("has_gym8", "G8"), ("has_gym6", "G6"), ("has_gym4", "G4"), ("has_lyceum", "lyceum"),
                                ("has_sos_maturita", "SOŠ")) if r[flag] == "1"]
     out.append({"red_izo": rid, "nazev": (lambda d: d if len(d) >= 12 else (r["zkraceny_nazev"] or d))(display_name(r["nazev"])), "plny_nazev": r["nazev"],
-                "obec": r["obce_mist_vyuky_msk"] or r["obec"], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
+                "obec": r["obec"] if r["sidlo_mimo_msk"] != "1" else r["obce_mist_vyuky_msk"].split(";")[0].strip(),
+                "mista": [o.strip() for o in r["obce_mist_vyuky_msk"].split(";") if o.strip()], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
                 "kapacita": int(r["maturita_denni_obory_kapacita"] or 0),
                 "geo": geo.get(rid), "csi": csi.get(rid), "vs_claim": vs_claim.get(rid),
                 "fin": ({"rok": fin[rid]["rok"], "naklady_mil": round(fin[rid]["costs_total"] / 1e6, 1),

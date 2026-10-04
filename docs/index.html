@@ -52,6 +52,9 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
 #map { height: 420px; border: 1px solid var(--line); border-radius: 6px; margin: 8px 0; }
 .csi { font-size: .85rem; margin: 6px 0; } .csi p { margin: 4px 0; }
 .legend span { margin-right: 10px; white-space: nowrap; }
+.weights { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .85rem; margin: 6px 0; align-items: center; }
+.weights label { display: flex; align-items: center; gap: 6px; }
+.weights input { width: 90px; } .weights output { font-variant-numeric: tabular-nums; min-width: 2.5em; }
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -91,12 +94,13 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
     <span id="chips"></span>
     <label class="note"><input type="checkbox" id="sortalpha"> abecedně podle obce</label>
   </div>
+  <div class="weights" id="weights"></div>
   <p class="note" id="count"></p>
   <div class="wrap"><table id="schools">
     <thead><tr><th>Škola</th><th>Obec</th><th>Typ</th><th title="Přidaná hodnota">A</th><th title="Výsledky maturity">B</th><th title="Excelence: olympiády, SOČ">C</th><th title="Zájem o školu">E</th><th>Souhrn*</th></tr></thead>
     <tbody></tbody>
   </table></div>
-  <p class="note">* Předběžný souhrn jen z pilířů, které už máme (zatím A, B, C, E, přepočtené váhy). Pilíře D a F se doplňují. Pilíř C se srovnává jen v rámci MSK. Šedě jsou typy studia s méně než 10 maturanty ročně, ty se nehodnotí.</p>
+  <p class="note">* Souhrn = vážený průměr pilířů, které škola má (váhy nahoře, výchozí A 30, B 20, C 15, E 10). Pilíře D a F se doplňují. Pilíř C se srovnává jen v rámci MSK. Šedě jsou typy studia s méně než 10 maturanty ročně, ty se nehodnotí.</p>
 
   <h2>Zdroje dat</h2>
   <div class="wrap"><table id="sources">
@@ -134,6 +138,26 @@ const bandCell = (b, z) => b === null || b === undefined ? `<span class="note">�
 const n1 = v => v === null || v === undefined ? "–" : String(v).replace(".", ",");
 const sgn = v => v === null || v === undefined ? "–" : (v > 0 ? "+" : "") + n1(v);
 let schools = [], active = new Set();
+const W = { A: 30, B: 20, C: 15, E: 10 };
+const PN = { A: "přidaná hodnota", B: "maturita", C: "excelence", E: "zájem" };
+const toBand = z => z === null ? null : z >= 1 ? 2 : z >= .33 ? 1 : z >= -.33 ? 0 : z >= -1 ? -1 : -2;
+function recompute() {
+  for (const s of schools) for (const u of s.units) {
+    const have = Object.keys(W).filter(k => u.z?.[k] !== null && u.z?.[k] !== undefined && W[k] > 0);
+    const sw = have.reduce((a, k) => a + W[k], 0);
+    u.comp = u.ok && have.length >= 2 && sw ? Math.round(100 * have.reduce((a, k) => a + W[k] * u.z[k], 0) / sw) / 100 : null;
+    u.comp_band = toBand(u.comp);
+  }
+}
+function drawWeights() {
+  document.getElementById("weights").innerHTML = "<span class=\"note\">Váhy souhrnu:</span>" + Object.keys(W).map(k =>
+    `<label title="${PN[k]}">${k} <input type="range" min="0" max="50" step="5" value="${W[k]}" data-k="${k}"><output>${W[k]}</output></label>`).join("");
+  document.getElementById("weights").addEventListener("input", e => {
+    const k = e.target.dataset.k; if (!k) return;
+    W[k] = +e.target.value; e.target.nextElementSibling.textContent = W[k];
+    recompute(); renderSchools(); paintMap();
+  });
+}
 const fold = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 function detail(s, u) {
   return `<tr class="det"><td colspan="8"><div class="detgrid">
@@ -142,7 +166,7 @@ function detail(s, u) {
     <div><b>Excelence (C)</b><br>${n1(u.c_index)} bodu ročně na 100 žáků; ${u.c_nat ?? 0} účastí v celostátních kolech, ${u.c_reg_succ ?? 0} úspěšných v krajských kolech (2021/22–2025/26, celá škola)</div>
     <div><b>Zájem (E)</b><br>${n1(u.poptavka)} přihlášek 1. priority na místo, přijatí v průměru na ${n1(u.adm_pct)}. percentilu přijímaček (2024–2026)</div>
     <div><b>Velikost</b><br>${n1(u.n)} maturantů ročně, skupiny oborů ${esc(u.smo16)}</div>
-  </div>${extraBlock(s)}${csiBlock(s)}<div class="note">${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
+  </div>${extraBlock(s)}${csiBlock(s)}<div class="note">${s.mista?.length > 1 ? `Vyučuje v obcích: ${esc(s.mista.join(", "))} · ` : ""}${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
 }
 function extraBlock(s) {
   const f = s.fin, v = s.vs_claim, parts = [];
@@ -160,6 +184,16 @@ function csiBlock(s) {
     ${c.silne ? `<p><i>Silné stránky:</i> ${cut(c.silne)}</p>` : ""}${c.slabe ? `<p><i>Slabé stránky:</i> ${cut(c.slabe)}</p>` : ""}</div>`;
 }
 const BCOL = { "2": "--g2", "1": "--g1", "0": "--line", "-1": "--r1", "-2": "--r2" };
+let markers = [];
+function paintMap() {
+  const css = getComputedStyle(document.documentElement);
+  for (const [s, m] of markers) {
+    const scored = s.units.filter(u => u.comp_band !== null && u.comp_band !== undefined);
+    const best = scored.length ? Math.max(...scored.map(u => u.comp_band)) : null;
+    m.setStyle({ fillColor: best === null ? "#9a9994" : css.getPropertyValue(BCOL[best]).trim() });
+    m.setPopupContent(`<b>${esc(s.nazev)}</b><br>${s.units.map(u => `${esc(u.unit)}: ${u.comp_band === null || u.comp_band === undefined ? "–" : BAND[u.comp_band][0]}`).join(" · ")}`);
+  }
+}
 function drawMap() {
   if (!window.L) return;
   const css = getComputedStyle(document.documentElement);
@@ -171,9 +205,8 @@ function drawMap() {
     const scored = s.units.filter(u => u.comp_band !== null && u.comp_band !== undefined);
     const best = scored.length ? Math.max(...scored.map(u => u.comp_band)) : null;
     const col = best === null ? "#9a9994" : css.getPropertyValue(BCOL[best]).trim();
-    L.circleMarker(s.geo, { radius: 7, color: "#333", weight: 1, fillColor: col, fillOpacity: .9 })
-      .bindPopup(`<b>${esc(s.nazev)}</b><br>${s.units.map(u => `${esc(u.unit)}: ${u.comp_band === null || u.comp_band === undefined ? "–" : BAND[u.comp_band][0]}`).join(" · ")}`)
-      .addTo(map);
+    const m = L.circleMarker(s.geo, { radius: 7, color: "#333", weight: 1, fillColor: col, fillOpacity: .9 }).bindPopup("").addTo(map);
+    markers.push([s, m]);
   }
 }
 let open = new Set();
@@ -192,7 +225,7 @@ function renderSchools() {
     const key = s.red_izo + "|" + u.unit;
     const cls = u.missing || !u.ok ? "dim" : "";
     const b = u.bands || {};
-    const main = `<tr class="row ${cls}" data-k="${key}"><td>${esc(s.nazev)}</td><td>${esc(s.obec)}</td><td><span class="tag">${esc(u.unit)}</span></td>
+    const main = `<tr class="row ${cls}" data-k="${key}"><td>${esc(s.nazev)}</td><td>${esc(s.obec)}${s.mista?.length > 1 ? ` <span class="note" title="Místa výuky: ${esc(s.mista.join(", "))}">+${s.mista.length - 1}</span>` : ""}</td><td><span class="tag">${esc(u.unit)}</span></td>
       <td>${bandCell(b.A, u.z?.A)}</td><td>${bandCell(b.B, u.z?.B)}</td><td>${bandCell(b.C, u.z?.C)}</td><td>${bandCell(b.E, u.z?.E)}</td><td>${bandCell(u.comp_band, u.comp)}</td></tr>`;
     return main + (open.has(key) && !u.missing ? detail(s, u) : "");
   }).join("");
@@ -212,7 +245,7 @@ document.querySelector("#schools tbody").addEventListener("click", e => {
 });
 document.getElementById("q").addEventListener("input", renderSchools);
 document.getElementById("sortalpha").addEventListener("change", renderSchools);
-fetch("schools.json", { cache: "no-store" }).then(r => r.json()).then(d => { schools = d; renderSchools(); drawMap(); });
+fetch("schools.json", { cache: "no-store" }).then(r => r.json()).then(d => { schools = d; recompute(); drawWeights(); renderSchools(); drawMap(); paintMap(); });
 </script>
 </body>
 </html>
