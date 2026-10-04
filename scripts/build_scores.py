@@ -206,3 +206,46 @@ with open(os.path.join(D, "va_fit.csv"), "w", newline="") as fh:
 print(len(out), "units;", sum(r["enough_data"] for r in out), "with enough data")
 for g, v in sorted(fit_info.items()):
     print(g, v)
+
+# ---------- extras for the site: yearly trends and a few context numbers per unit (MSK only) ----------
+SMO_NAMES = {"GY4": "gymnázium 4leté", "GY6": "gymnázium 6leté", "GY8": "gymnázium 8leté", "LYC": "lyceum",
+             "NOS": "nástavba – ostatní", "NTE": "nástavba – technická", "SEK": "ekonomické", "SHP": "hotelové a podnikatelské",
+             "SHU": "pedagogické a humanitní", "ST1": "technické", "ST2": "technologické", "SUM": "umělecké",
+             "SZD": "zdravotnické", "SZE": "zemědělské", "UOS": "SOU s maturitou – ostatní", "UTE": "SOU s maturitou – technické"}
+tr = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))   # (s,u) -> year -> metric -> [(v,w)]
+for r in mz:
+    if r["redizo"] not in msk:
+        continue
+    k, y = (r["redizo"], unit(r["group"])), int(r["year"])
+    tr[k][y]["cj"].append((f(r["cj_pct"]), f(r["cj_konali"])))
+    tr[k][y]["aj"].append((f(r["aj_pct"]), f(r["aj_konali"])))
+    tr[k][y]["n"].append((f(r["all_prihl"]), 1))
+for (s, g), v in resid.items():
+    if s in msk:
+        for e, w, y in v:
+            tr[(s, unit(g))][y]["va"].append((e, w))
+fill = defaultdict(lambda: [0, 0])
+for r in pz:
+    if r["redizo"] in msk and r["year"] == str(max(E_YEARS)):
+        p_, k_ = f(r["prijati"]), f(r["kapacita"])
+        if p_ is not None and k_:
+            fill[(r["redizo"], unit(r["group"]))][0] += p_; fill[(r["redizo"], unit(r["group"]))][1] += k_
+extras = {}
+for k, years in tr.items():
+    ys = sorted(years)
+    row = {"years": ys}
+    for m in ("cj", "aj", "va"):
+        row[m] = [round(v, 1) if (v := wmean(years[y][m])[0]) is not None else None for y in ys]
+    row["n"] = [int(sum(v for v, _ in years[y]["n"] if v)) for y in ys]
+    aj3 = wmean([x for y in ys if y in B_YEARS for x in years[y]["aj"]])[0]
+    row["aj_pct"] = round(aj3, 1) if aj3 is not None else None
+    if fill[k][1]:
+        row["fill"] = round(100 * fill[k][0] / fill[k][1])
+    row["obory"] = sorted({SMO_NAMES.get(g, g) for (s, g) in school_group if (s, unit(g)) == k})
+    extras["|".join(k)] = row
+for k, v in fill.items():
+    if "|".join(k) not in extras and v[1]:
+        extras["|".join(k)] = {"fill": round(100 * v[0] / v[1])}
+import json
+json.dump(extras, open(os.path.join(D, "extras.json"), "w"), ensure_ascii=False)
+print(len(extras), "units with extras")

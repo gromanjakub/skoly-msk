@@ -1,5 +1,5 @@
 """Assemble docs/schools.json for the site: register info + per-unit pillar scores."""
-import csv, json, os
+import csv, json, os, re
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 WEIGHTS = {"A": 30, "B": 20, "C": 15, "D": 15, "E": 10, "F": 10}
@@ -39,6 +39,7 @@ if os.path.exists(p):
     for k, v in json.load(open(p)).items():
         extra_pillars[tuple(k.split("|"))] = v
 
+extras = json.load(open(os.path.join(ROOT, "data/derived/extras.json")))
 units = {}
 for s in scores:
     z = {"A": fnum(s["zA"], 2), "B": fnum(s["zB"], 2), "E": fnum(s["zE"], 2)}
@@ -52,6 +53,8 @@ for s in scores:
         "cj_pct": fnum(s["cj_pct"]), "usp": fnum(s["usp"]), "va": fnum(s["va"]), "va_rel": fnum(s["va_rel"], 2), "va_cohorts": int(s["va_cohorts"] or 0),
         "poptavka": fnum(s["poptavka"], 2), "adm_pct": fnum(s["adm_pct"]),
         **ex.get("detail", {}),
+        **{(("tr_" + k) if k in ("years", "cj", "aj", "va", "n") else k): v
+           for k, v in extras.get(s["redizo"] + "|" + s["unit"], {}).items()},
         "z": z, "bands": {k: band(v) if (ok or k in ("C", "E")) else None for k, v in z.items()},
         "comp": round(comp, 2) if comp is not None else None, "comp_band": band(comp), "comp_pillars": sorted(have),
     })
@@ -92,6 +95,11 @@ for (rid, coh), m in sorted(vsr.items()):
             continue
         vs_claim[rid] = {"rocnik": coh, "podil": share, "url": m["n_admitted_vs"]["source_url"]}
 
+ia = {}
+for f in csv.DictReader(open(os.path.join(ROOT, "data/infoabsolvent.csv"))):
+    if f["url"] and f["red_izo"] not in ia:
+        ia[f["red_izo"]] = re.sub(r"(/Skola/\d+).*", r"\1", f["url"]) if "/Skola/" in f["url"] else f["url"]
+
 out = []
 for rid, r in reg.items():
     if r["has_maturita"] != "1" and r["has_nastavba"] != "1":
@@ -103,13 +111,23 @@ for rid, r in reg.items():
                 "mista": [o.strip() for o in r["obce_mist_vyuky_msk"].split(";") if o.strip()], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
                 "kapacita": int(r["maturita_denni_obory_kapacita"] or 0),
                 "mimo": r["kraj_sidla"] if r["sidlo_mimo_msk"] == "1" else None,
-                "csi": csi.get(rid), "vs_claim": vs_claim.get(rid),
+                "csi": csi.get(rid), "infoabsolvent": ia.get(rid), "vs_claim": vs_claim.get(rid),
                 "fin": ({"rok": fin[rid]["rok"], "naklady_mil": round(fin[rid]["costs_total"] / 1e6, 1),
                          "osobni_pct": round(100 * fin[rid].get("personnel_costs", 0) / fin[rid]["costs_total"]),
                          "investice_mil": round(invest.get(rid, 0) / 1000, 1)}
                         if rid in fin and fin[rid].get("costs_total") else None),
                 "units": sorted(units.get(rid, []), key=lambda u: list(UNIT_LABEL.values()).index(u["unit"]))})
 out.sort(key=lambda x: (x["obec"], x["nazev"]))
+with open(os.path.join(ROOT, "docs/skoly-msk.csv"), "w", newline="", encoding="utf-8-sig") as fh:
+    w = csv.writer(fh)
+    w.writerow(["red_izo", "skola", "obec", "typ_studia", "maturantu_rocne", "hodnoceno", "A_z", "B_z", "C_z", "E_z", "souhrn_z",
+                "prid_hodnota_percentilu", "cj_percentil", "uspesnost_pct", "aj_percentil", "c_bodu_na_100", "poptavka_p1_na_misto",
+                "prijati_percentil", "naplnenost_pct"])
+    for x in out:
+        for u in x["units"]:
+            w.writerow([x["red_izo"], x["plny_nazev"], x["obec"], u["unit"], u["n"], int(u["ok"]), u["z"].get("A"), u["z"].get("B"),
+                        u["z"].get("C"), u["z"].get("E"), u["comp"], u["va"], u["cj_pct"], u["usp"], u.get("aj_pct"),
+                        u.get("c_index"), u["poptavka"], u["adm_pct"], u.get("fill")])
 missing = [s["redizo"] for s in scores if s["redizo"] not in reg]
 json.dump(out, open(os.path.join(ROOT, "docs/schools.json"), "w"), ensure_ascii=False, separators=(",", ":"))
 print(len(out), "schools,", sum(len(x["units"]) for x in out), "units; scored schools not in register:", sorted(set(missing)))

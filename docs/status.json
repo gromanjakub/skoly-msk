@@ -23,7 +23,7 @@
       "weight": 15,
       "what": "Úspěchy v celostátních kolech olympiád, SOČ a Eurorebusu na 100 žáků",
       "status": "ok",
-      "note": "Spočteno: 1 519 výsledků spárovaných se školami (98 %), body na 100 žáků, srovnání v rámci MSK. Přepsané jazykové olympiády zatím vynechány."
+      "note": "Spočteno: přes 1 500 výsledků spárovaných se školami (98 %), body na 100 žáků, srovnání v rámci MSK. Mezery: jazykové olympiády až od 2023/24, z olympiády v ČJ jen první desítka."
     },
     {
       "id": "D",
@@ -160,6 +160,10 @@
     {
       "date": "2026-10-04",
       "text": "Mapa odstraněna."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "Vývoj v čase (percentil v ČJ, přidaná hodnota a angličtina po letech), filtr podle oboru, naplněnost míst, odkaz na konkrétní školu, stažení dat v CSV, úprava pro mobil. Tabulka škol přesunuta nahoru."
     }
   ]
 }
