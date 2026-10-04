@@ -7,7 +7,7 @@ import csv, glob, os, re, sys
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 RAW = os.path.join(ROOT, "data/raw/cermat")
 OUT = os.path.join(ROOT, "data/derived")
-sys.path.insert(0, RAW)
+sys.path.insert(0, os.path.dirname(__file__))
 from _xlsx_stdlib import read  # noqa: E402
 
 os.makedirs(OUT, exist_ok=True)
