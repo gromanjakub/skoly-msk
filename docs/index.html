@@ -166,7 +166,7 @@ function detail(s, u) {
     <div><b>Excelence (C)</b><br>${n1(u.c_index)} bodu ročně na 100 žáků; ${u.c_nat ?? 0} účastí v celostátních kolech, ${u.c_reg_succ ?? 0} úspěšných v krajských kolech (2021/22–2025/26, celá škola)</div>
     <div><b>Zájem (E)</b><br>${n1(u.poptavka)} přihlášek 1. priority na místo, přijatí v průměru na ${n1(u.adm_pct)}. percentilu přijímaček (2024–2026)</div>
     <div><b>Velikost</b><br>${n1(u.n)} maturantů ročně, skupiny oborů ${esc(u.smo16)}</div>
-  </div>${extraBlock(s)}${csiBlock(s)}<div class="note">${s.mista?.length > 1 ? `Vyučuje v obcích: ${esc(s.mista.join(", "))} · ` : ""}${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
+  </div>${s.mimo ? `<p class="note"><b>Sídlo mimo MSK (${esc(s.mimo)}).</b> CERMAT vede výsledky maturity za celou organizaci, pobočku v MSK od nich oddělit nejde, proto chybí pilíře A a B. Zájem (E) je za obory vyučované v MSK.</p>` : ""}${!u.ok && !s.mimo ? `<p class="note">Méně než 10 maturantů ročně (nový nebo malý obor), pilíře A, B a souhrn se nepočítají.</p>` : ""}${extraBlock(s)}${csiBlock(s)}<div class="note">${s.mista?.length > 1 ? `Vyučuje v obcích: ${esc(s.mista.join(", "))} · ` : ""}${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
 }
 function extraBlock(s) {
   const f = s.fin, v = s.vs_claim, parts = [];

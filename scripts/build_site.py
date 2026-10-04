@@ -52,7 +52,7 @@ for s in scores:
         "cj_pct": fnum(s["cj_pct"]), "usp": fnum(s["usp"]), "va": fnum(s["va"]), "va_rel": fnum(s["va_rel"], 2), "va_cohorts": int(s["va_cohorts"] or 0),
         "poptavka": fnum(s["poptavka"], 2), "adm_pct": fnum(s["adm_pct"]),
         **ex.get("detail", {}),
-        "z": z, "bands": {k: band(v) if ok else None for k, v in z.items()},
+        "z": z, "bands": {k: band(v) if (ok or k in ("C", "E")) else None for k, v in z.items()},
         "comp": round(comp, 2) if comp is not None else None, "comp_band": band(comp), "comp_pillars": sorted(have),
     })
 
@@ -94,14 +94,15 @@ for (rid, coh), m in sorted(vsr.items()):
 
 out = []
 for rid, r in reg.items():
-    if r["has_maturita"] != "1":
+    if r["has_maturita"] != "1" and r["has_nastavba"] != "1":
         continue
     t = [lab for flag, lab in (("has_gym8", "G8"), ("has_gym6", "G6"), ("has_gym4", "G4"), ("has_lyceum", "lyceum"),
-                               ("has_sos_maturita", "SOŠ")) if r[flag] == "1"]
+                               ("has_sos_maturita", "SOŠ"), ("has_nastavba", "nástavba")) if r[flag] == "1"]
     out.append({"red_izo": rid, "nazev": (lambda d: d if len(d) >= 12 else (r["zkraceny_nazev"] or d))(display_name(r["nazev"])), "plny_nazev": r["nazev"],
                 "obec": r["obec"] if r["sidlo_mimo_msk"] != "1" else r["obce_mist_vyuky_msk"].split(";")[0].strip(),
                 "mista": [o.strip() for o in r["obce_mist_vyuky_msk"].split(";") if o.strip()], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
                 "kapacita": int(r["maturita_denni_obory_kapacita"] or 0),
+                "mimo": r["kraj_sidla"] if r["sidlo_mimo_msk"] == "1" else None,
                 "geo": geo.get(rid), "csi": csi.get(rid), "vs_claim": vs_claim.get(rid),
                 "fin": ({"rok": fin[rid]["rok"], "naklady_mil": round(fin[rid]["costs_total"] / 1e6, 1),
                          "osobni_pct": round(100 * fin[rid].get("personnel_costs", 0) / fin[rid]["costs_total"]),
