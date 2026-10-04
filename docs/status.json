@@ -164,6 +164,10 @@
     {
       "date": "2026-10-04",
       "text": "Vývoj v čase (percentil v ČJ, přidaná hodnota a angličtina po letech), filtr podle oboru, naplněnost míst, odkaz na konkrétní školu, stažení dat v CSV, úprava pro mobil. Tabulka škol přesunuta nahoru."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "V detailu školy první část historie (MO, FO, ChO, informatika, ekonomická olympiáda 2010/11–2020/21, mimo hodnocení)."
     }
   ]
 }

@@ -172,7 +172,7 @@ function detail(s, u) {
     <div><b>Vývoj: percentil v ČJ u maturity</b>${spark(u.tr_years || [], u.tr_cj, "cj", v => n1(v)) || "<br>–"}</div>
     <div><b>Vývoj: přidaná hodnota podle ročníku</b>${spark(u.tr_years || [], u.tr_va, "va", v => sgn(v)) || "<br>–"}</div>
     <div><b>Angličtina</b><br>průměrný percentil ${n1(u.aj_pct)} (2024–2026)${spark(u.tr_years || [], u.tr_aj, "aj", v => n1(v))}</div>
-  </div>${s.mimo ? `<p class="note"><b>Sídlo mimo MSK (${esc(s.mimo)}).</b> CERMAT vede výsledky maturity za celou organizaci, pobočku v MSK od nich oddělit nejde, proto chybí pilíře A a B. Zájem (E) je za obory vyučované v MSK.</p>` : ""}${!u.ok && !s.mimo ? `<p class="note">Méně než 10 maturantů ročně (nový nebo malý obor), pilíře A, B a souhrn se nepočítají.</p>` : ""}${extraBlock(s)}${csiBlock(s)}<div class="note"><a href="#s=${s.red_izo}-${encodeURIComponent(u.unit)}">odkaz na tuto školu</a>${s.infoabsolvent ? ` · <a href="${esc(s.infoabsolvent)}" target="_blank" rel="noopener">InfoAbsolvent</a>` : ""} · ${s.mista?.length > 1 ? `Vyučuje v obcích: ${esc(s.mista.join(", "))} · ` : ""}${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
+  </div>${s.mimo ? `<p class="note"><b>Sídlo mimo MSK (${esc(s.mimo)}).</b> CERMAT vede výsledky maturity za celou organizaci, pobočku v MSK od nich oddělit nejde, proto chybí pilíře A a B. Zájem (E) je za obory vyučované v MSK.</p>` : ""}${!u.ok && !s.mimo ? `<p class="note">Méně než 10 maturantů ročně (nový nebo malý obor), pilíře A, B a souhrn se nepočítají.</p>` : ""}${extraBlock(s)}${histBlock(s)}${csiBlock(s)}<div class="note"><a href="#s=${s.red_izo}-${encodeURIComponent(u.unit)}">odkaz na tuto školu</a>${s.infoabsolvent ? ` · <a href="${esc(s.infoabsolvent)}" target="_blank" rel="noopener">InfoAbsolvent</a>` : ""} · ${s.mista?.length > 1 ? `Vyučuje v obcích: ${esc(s.mista.join(", "))} · ` : ""}${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
 }
 function extraBlock(s) {
   const f = s.fin, v = s.vs_claim, parts = [];
@@ -197,6 +197,12 @@ function spark(years, vals, label, fmt) {
     ${pts.map(p => `<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="2" fill="var(--accent)"><title>${p[0]}: ${fmt(p[1])}</title></circle>`).join("")}
     <text x="4" y="${H - 1}">${x0}</text><text x="${W - 4}" y="${H - 1}" text-anchor="end">${x1}</text>
     </svg><span class="note">${last[0]}: ${fmt(last[1])}</span>`;
+}
+function histBlock(s) {
+  const h = s.historie; if (!h?.length) return "";
+  return `<div class="csi"><b>Historie (2010/11–2020/21, mimo hodnocení):</b> ${h.map(x =>
+    `${esc(x.soutez)} ${esc(x.rok)}${x.kat ? " (" + esc(x.kat) + ")" : ""}: ${esc(x.misto)}${x.medaile ? " " + esc(x.medaile) : ""}`).join(" · ")}
+    <span class="note">Zatím jen MO, FO, ChO, informatika a ekonomická olympiáda, umístění 1.–3. a vítězové.</span></div>`;
 }
 function csiBlock(s) {
   const c = s.csi; if (!c) return "";

@@ -95,6 +95,16 @@ for (rid, coh), m in sorted(vsr.items()):
             continue
         vs_claim[rid] = {"rocnik": coh, "podil": share, "url": m["n_admitted_vs"]["source_url"]}
 
+hist = {}
+for f in ("historie_sci.csv",):   # more parts (historie_*.csv) get added here as they're finished
+    pth = os.path.join(ROOT, "data", f)
+    if os.path.exists(pth):
+        for h in csv.DictReader(open(pth)):
+            if h["red_izo"]:
+                hist.setdefault(h["red_izo"], []).append(
+                    {"soutez": h["competition"], "rok": h["year"], "kat": h["category"], "misto": h["placement"], "medaile": h.get("medal", "")})
+for v in hist.values():
+    v.sort(key=lambda x: x["rok"], reverse=True)
 ia = {}
 for f in csv.DictReader(open(os.path.join(ROOT, "data/infoabsolvent.csv"))):
     if f["url"] and f["red_izo"] not in ia:
@@ -111,7 +121,7 @@ for rid, r in reg.items():
                 "mista": [o.strip() for o in r["obce_mist_vyuky_msk"].split(";") if o.strip()], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
                 "kapacita": int(r["maturita_denni_obory_kapacita"] or 0),
                 "mimo": r["kraj_sidla"] if r["sidlo_mimo_msk"] == "1" else None,
-                "csi": csi.get(rid), "infoabsolvent": ia.get(rid), "vs_claim": vs_claim.get(rid),
+                "csi": csi.get(rid), "historie": hist.get(rid), "infoabsolvent": ia.get(rid), "vs_claim": vs_claim.get(rid),
                 "fin": ({"rok": fin[rid]["rok"], "naklady_mil": round(fin[rid]["costs_total"] / 1e6, 1),
                          "osobni_pct": round(100 * fin[rid].get("personnel_costs", 0) / fin[rid]["costs_total"]),
                          "investice_mil": round(invest.get(rid, 0) / 1000, 1)}
