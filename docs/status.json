@@ -22,8 +22,8 @@
       "name": "Excelence",
       "weight": 15,
       "what": "Úspěchy v celostátních kolech olympiád, SOČ a Eurorebusu na 100 žáků",
-      "status": "partial",
-      "note": "1 546 výsledků z 20 soutěží za 2021/22–2025/26 včetně krajských kol MO, FO, ChO, BiO a informatiky. Zbývá ručně přiřadit asi 50 názvů škol. Jazykové olympiády a dějepis jen zčásti."
+      "status": "ok",
+      "note": "Spočteno: 1 519 výsledků spárovaných se školami (98 %), body na 100 žáků, srovnání v rámci MSK. Přepsané jazykové olympiády zatím vynechány."
     },
     {
       "id": "D",
@@ -72,7 +72,7 @@
     {
       "name": "Olympiády, SOČ, Eurorebus",
       "use": "Pilíř C",
-      "status": "partial",
+      "status": "ok",
       "note": "Nejlépe chemie, biologie, fyzika, informatika, matematika a SOČ. Jazykové olympiády jen jako obrázky a skeny, web dějepisné olympiády zaplavil spam."
     },
     {
@@ -90,8 +90,8 @@
     {
       "name": "InfoAbsolvent",
       "use": "Pilíř E (uchazeči na místo po oborech)",
-      "status": "pending",
-      "note": "Ověřeno na jedné škole, zatím nestaženo."
+      "status": "blocked",
+      "note": "Staženo pro 124 škol, ale jde o horší kopii dat CERMAT o rok zpět. Nepoužito."
     }
   ],
   "log": [
@@ -110,6 +110,10 @@
     {
       "date": "2026-10-04",
       "text": "První hodnocení: pilíře A, B a E pro 182 kombinací škola × typ studia. Metodika v docs/metodika.md."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "Přidán pilíř C (excelence). InfoAbsolvent prověřen a zamítnut jako duplikát dat CERMAT."
     }
   ]
 }

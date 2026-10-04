@@ -57,7 +57,7 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
   <p class="sub">Pilotní vícefaktorové hodnocení maturitních škol z veřejných dat</p>
   <p class="sub" id="updated"></p>
 
-  <div class="banner"><strong>Pilotní verze, metodika v0.1.</strong> Hodnocení zatím stojí jen na pilířích A, B a E z dat CERMAT. Čísla se budou měnit, jak přibývají data. Berte je jako hrubou orientaci, ne jako pořadí.</div>
+  <div class="banner"><strong>Pilotní verze, metodika v0.1.</strong> Hodnocení zatím stojí na pilířích A, B, E (CERMAT) a C (olympiády, SOČ, Eurorebus). Čísla se budou měnit, jak přibývají data. Berte je jako hrubou orientaci, ne jako pořadí.</div>
 
   <h2>Pilíře hodnocení</h2>
   <p class="note">Váhy jsou výchozí návrh. Ve finální verzi si je půjde nastavit.</p>
@@ -84,10 +84,10 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
   </div>
   <p class="note" id="count"></p>
   <div class="wrap"><table id="schools">
-    <thead><tr><th>Škola</th><th>Obec</th><th>Typ</th><th title="Přidaná hodnota">A</th><th title="Výsledky maturity">B</th><th title="Zájem o školu">E</th><th>Souhrn*</th></tr></thead>
+    <thead><tr><th>Škola</th><th>Obec</th><th>Typ</th><th title="Přidaná hodnota">A</th><th title="Výsledky maturity">B</th><th title="Excelence: olympiády, SOČ">C</th><th title="Zájem o školu">E</th><th>Souhrn*</th></tr></thead>
     <tbody></tbody>
   </table></div>
-  <p class="note">* Předběžný souhrn jen z pilířů, které už máme (zatím A, B, E, přepočtené váhy). Pilíře C, D a F se doplňují. Šedě jsou typy studia s méně než 10 maturanty ročně, ty se nehodnotí.</p>
+  <p class="note">* Předběžný souhrn jen z pilířů, které už máme (zatím A, B, C, E, přepočtené váhy). Pilíře D a F se doplňují. Pilíř C se srovnává jen v rámci MSK. Šedě jsou typy studia s méně než 10 maturanty ročně, ty se nehodnotí.</p>
 
   <h2>Zdroje dat</h2>
   <div class="wrap"><table id="sources">
@@ -127,9 +127,10 @@ const sgn = v => v === null || v === undefined ? "–" : (v > 0 ? "+" : "") + n1
 let schools = [], active = new Set();
 const fold = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 function detail(s, u) {
-  return `<tr class="det"><td colspan="7"><div class="detgrid">
+  return `<tr class="det"><td colspan="8"><div class="detgrid">
     <div><b>Přidaná hodnota (A)</b><br>${sgn(u.va)} percentilu v ČJ oproti očekávání podle přijímaček (${u.va_cohorts} ročníků)</div>
     <div><b>Maturita (B)</b><br>ČJ průměrný percentil ${n1(u.cj_pct)}, uspělo ${n1(u.usp)} % přihlášených (2024–2026)</div>
+    <div><b>Excelence (C)</b><br>${n1(u.c_index)} bodu ročně na 100 žáků; ${u.c_nat ?? 0} účastí v celostátních kolech, ${u.c_reg_succ ?? 0} úspěšných v krajských kolech (2021/22–2025/26, celá škola)</div>
     <div><b>Zájem (E)</b><br>${n1(u.poptavka)} přihlášek 1. priority na místo, přijatí v průměru na ${n1(u.adm_pct)}. percentilu přijímaček (2024–2026)</div>
     <div><b>Velikost</b><br>${n1(u.n)} maturantů ročně, skupiny oborů ${esc(u.smo16)}</div>
   </div><div class="note">${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
@@ -151,7 +152,7 @@ function renderSchools() {
     const cls = u.missing || !u.ok ? "dim" : "";
     const b = u.bands || {};
     const main = `<tr class="row ${cls}" data-k="${key}"><td>${esc(s.nazev)}</td><td>${esc(s.obec)}</td><td><span class="tag">${esc(u.unit)}</span></td>
-      <td>${bandCell(b.A, u.z?.A)}</td><td>${bandCell(b.B, u.z?.B)}</td><td>${bandCell(b.E, u.z?.E)}</td><td>${bandCell(u.comp_band, u.comp)}</td></tr>`;
+      <td>${bandCell(b.A, u.z?.A)}</td><td>${bandCell(b.B, u.z?.B)}</td><td>${bandCell(b.C, u.z?.C)}</td><td>${bandCell(b.E, u.z?.E)}</td><td>${bandCell(u.comp_band, u.comp)}</td></tr>`;
     return main + (open.has(key) && !u.missing ? detail(s, u) : "");
   }).join("");
 }

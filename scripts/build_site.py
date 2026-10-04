@@ -42,7 +42,8 @@ if os.path.exists(p):
 units = {}
 for s in scores:
     z = {"A": fnum(s["zA"], 2), "B": fnum(s["zB"], 2), "E": fnum(s["zE"], 2)}
-    z.update(extra_pillars.get((s["redizo"], s["unit"]), {}))
+    ex = extra_pillars.get((s["redizo"], s["unit"]), {})
+    z.update(ex.get("z", {}))
     ok = s["enough_data"] == "1"
     have = {k: v for k, v in z.items() if v is not None}
     comp = (sum(WEIGHTS[k] * v for k, v in have.items()) / sum(WEIGHTS[k] for k in have)) if ok and len(have) >= 2 else None
@@ -50,6 +51,7 @@ for s in scores:
         "unit": UNIT_LABEL[s["unit"]], "smo16": s["smo16"], "n": fnum(s["n_mz_per_year"], 0), "ok": ok,
         "cj_pct": fnum(s["cj_pct"]), "usp": fnum(s["usp"]), "va": fnum(s["va"]), "va_cohorts": int(s["va_cohorts"] or 0),
         "poptavka": fnum(s["poptavka"], 2), "adm_pct": fnum(s["adm_pct"]),
+        **ex.get("detail", {}),
         "z": z, "bands": {k: band(v) if ok else None for k, v in z.items()},
         "comp": round(comp, 2) if comp is not None else None, "comp_band": band(comp), "comp_pillars": sorted(have),
     })

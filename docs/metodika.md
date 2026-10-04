@@ -20,10 +20,14 @@ Omezení: přijímačky do 2023 popisují **všechny uchazeče**, ne přijaté. 
 
 Průměr dvou z-skóre: průměrný percentil v ČJ a podíl úspěšných z přihlášených ke společné části (2024–2026, stav po podzimu, jen prvomaturanti). Matematika se nepoužívá, protože ji volí jen část žáků.
 
+## C – excelence
+
+Výsledky v soutěžích 2021/22–2025/26 z veřejných výsledkových listin: celostátní kola MO, FO, ChO, BiO, olympiády v informatice, SOČ, Eurorebusu, ekonomické, zeměpisné, dějepisné, jazykových olympiád a krajská kola MO, FO, ChO, BiO a informatiky v MSK. Body: celostátní kolo 1.–3. místo 5, úspěšný řešitel 3, ostatní účastníci 1,5; krajské kolo úspěšný řešitel 0,5, ostatní 0,2. Týmový výsledek se počítá jednou. Index = body za rok na 100 žáků (počet maturantů za rok × 4). Z-skóre z log(1 + index) se počítá jen v rámci MSK, zvlášť pro gymnázia a pro lycea s odbornými školami, protože celostátní data nemáme. Pilíř se počítá za celou školu, ne zvlášť pro typ studia. Výsledky jazykových olympiád 2023/24–2024/25, přepsané z obrázků, zatím nejsou zahrnuté. Názvy škol se párují s rejstříkem (98 % řádků). Krajská kola mají olympiády hlavně gymnaziální, takže odborné školy mají cestu hlavně přes SOČ.
+
 ## E – zájem o školu
 
 Průměr dvou z-skóre: přihlášky 1. priority na místo (logaritmus) a průměrný percentil přijatých v přijímačkách (2024–2026, 1. kolo, denní maturitní obory).
 
 ## Souhrn
 
-Vážený průměr dostupných pilířů (A 30, B 20, E 10, přepočteno). Předběžný, dokud chybí C, D a F.
+Vážený průměr dostupných pilířů (A 30, B 20, C 15, E 10, přepočteno). Předběžný, dokud chybí D a F.
