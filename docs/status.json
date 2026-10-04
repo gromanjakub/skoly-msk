@@ -7,7 +7,7 @@
       "weight": 30,
       "what": "Výsledky maturity vzhledem k výsledkům přijímaček téhož ročníku o čtyři roky dřív",
       "status": "partial",
-      "note": "Jen za celý ročník: přijímačky v roce R proti maturitě v roce R+4 (u osmiletých R+8). Jednotlivé žáky z veřejných dat propojit nejde."
+      "note": "Spočteno: maturita 2022–2026 proti přijímačkám o 4 (6, 8) let dřív, celostátní model pro každou skupinu oborů. Uchazeči, ne přijatí – viz metodika."
     },
     {
       "id": "B",
@@ -15,7 +15,7 @@
       "weight": 20,
       "what": "Úspěšnost a percentily v didaktických testech maturity, včetně žáků, kteří k maturitě nedošli",
       "status": "ok",
-      "note": "CERMAT, 2015–2026, po školách i skupinách oborů. Jen první pokus a jen státní část maturity."
+      "note": "Spočteno: percentil v ČJ a úspěšnost u maturity 2024–2026, srovnání se stejnou skupinou oborů v ČR."
     },
     {
       "id": "C",
@@ -39,7 +39,7 @@
       "weight": 10,
       "what": "Počet uchazečů na místo, minimální bodový zisk přijatých",
       "status": "partial",
-      "note": "Kapacity, uchazeči na místo a body přijatých až od roku 2024. Za 2017–2023 jen průměrný percentil všech uchazečů."
+      "note": "Spočteno: přihlášky 1. priority na místo a percentil přijatých, 2024–2026."
     },
     {
       "id": "F",
@@ -106,6 +106,10 @@
     {
       "date": "2026-10-04",
       "text": "Rejstřík škol, olympiády a ČŠI zpracovány. Pilíře D a F z veřejných dat zatím nejdou. Přidán seznam 126 maturitních škol v pilotu."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "První hodnocení: pilíře A, B a E pro 182 kombinací škola × typ studia. Metodika v docs/metodika.md."
     }
   ]
 }

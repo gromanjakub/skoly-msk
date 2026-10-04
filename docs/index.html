@@ -7,11 +7,11 @@
 <style>
 :root {
   --bg: #fbfaf8; --fg: #1d1d1b; --muted: #6b6a66; --line: #e3e1dc; --card: #ffffff;
-  --accent: #2f5d8a; --ok: #2e7d4f; --warn: #a86b00; --bad: #b3403a; --pend: #8a8984;
+  --g2: #1f6f8b; --g1: #a9d3e0; --r1: #f2c4a8; --r2: #b4542c; --accent: #2f5d8a; --ok: #2e7d4f; --warn: #a86b00; --bad: #b3403a; --pend: #8a8984;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #161615; --fg: #ecebe7; --muted: #a09f9a; --line: #2e2d2b; --card: #1f1f1d;
-    --accent: #7fb0e0; --ok: #6cc391; --warn: #e0a84a; --bad: #e57d76; --pend: #8a8984; }
+    --g2: #3b8fb0; --g1: #285a6b; --r1: #6e4128; --r2: #c0653a; --accent: #7fb0e0; --ok: #6cc391; --warn: #e0a84a; --bad: #e57d76; --pend: #8a8984; }
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg);
@@ -42,6 +42,12 @@ ul.log .d { color: var(--muted); font-variant-numeric: tabular-nums; margin-righ
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 .tag { display: inline-block; font-size: .78rem; padding: 0 6px; margin: 1px 2px 1px 0; border-radius: 4px;
   background: var(--line); white-space: nowrap; }
+.band { display: inline-block; min-width: 2.2em; text-align: center; border-radius: 4px; font-weight: 700; font-size: .85rem; padding: 0 4px; }
+.b2 { background: var(--g2); color: #fff; } .b1 { background: var(--g1); color: var(--fg); } .b0 { background: var(--line); color: var(--fg); }
+.bm1 { background: var(--r1); color: var(--fg); } .bm2 { background: var(--r2); color: #fff; }
+tr.row { cursor: pointer; } tr.row:hover td { background: var(--card); } tr.dim td { color: var(--muted); }
+tr.det td { background: var(--card); }
+.detgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; font-size: .88rem; margin-bottom: 6px; }
 footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
 </style>
 </head>
@@ -51,7 +57,7 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
   <p class="sub">Pilotní vícefaktorové hodnocení maturitních škol z veřejných dat</p>
   <p class="sub" id="updated"></p>
 
-  <div class="banner"><strong>Rozpracováno.</strong> Žádné pořadí škol zatím nezveřejňujeme. Stránka se průběžně doplňuje podle toho, jaká data se podaří získat.</div>
+  <div class="banner"><strong>Pilotní verze, metodika v0.1.</strong> Hodnocení zatím stojí jen na pilířích A, B a E z dat CERMAT. Čísla se budou měnit, jak přibývají data. Berte je jako hrubou orientaci, ne jako pořadí.</div>
 
   <h2>Pilíře hodnocení</h2>
   <p class="note">Váhy jsou výchozí návrh. Ve finální verzi si je půjde nastavit.</p>
@@ -69,17 +75,19 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
     <li>Nezveřejňují se jména žáků.</li>
   </ul>
 
-  <h2>Školy v pilotu</h2>
-  <p class="note">Všechny střední školy s maturitním oborem, které vyučují v MSK, podle rejstříku MŠMT. Abecedně podle obce, nejde o pořadí.</p>
+  <h2>Školy</h2>
+  <p class="note">Každá škola je rozdělená podle typu studia (G8, G6, G4, lyceum, SOŠ) a srovnává se se stejným typem v celé ČR. Pásma: <span class="band b2">++</span> výrazně nad průměrem ČR, <span class="band b1">+</span> nad průměrem, <span class="band b0">○</span> kolem průměru, <span class="band bm1">−</span> pod průměrem, <span class="band bm2">−−</span> výrazně pod průměrem. Kliknutím na řádek zobrazíte čísla.</p>
   <div class="filters">
     <input id="q" type="search" placeholder="Hledat školu nebo obec" aria-label="Hledat">
     <span id="chips"></span>
+    <label class="note"><input type="checkbox" id="sortcomp"> seřadit podle souhrnu</label>
   </div>
   <p class="note" id="count"></p>
   <div class="wrap"><table id="schools">
-    <thead><tr><th>Škola</th><th>Obec</th><th>Typ</th><th>Zřizovatel</th><th class="w">Kapacita</th></tr></thead>
+    <thead><tr><th>Škola</th><th>Obec</th><th>Typ</th><th title="Přidaná hodnota">A</th><th title="Výsledky maturity">B</th><th title="Zájem o školu">E</th><th>Souhrn*</th></tr></thead>
     <tbody></tbody>
   </table></div>
+  <p class="note">* Předběžný souhrn jen z pilířů, které už máme (zatím A, B, E, přepočtené váhy). Pilíře C, D a F se doplňují. Šedě jsou typy studia s méně než 10 maturanty ročně, ty se nehodnotí.</p>
 
   <h2>Zdroje dat</h2>
   <div class="wrap"><table id="sources">
@@ -90,7 +98,7 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
   <h2>Změny</h2>
   <ul class="log" id="log"></ul>
 
-  <footer>Neoficiální projekt. Data pocházejí z veřejných zdrojů uvedených výše.</footer>
+  <footer>Neoficiální projekt. Data: CZVV (CERMAT), rejstřík škol MŠMT a další veřejné zdroje uvedené výše. <a href="https://github.com/gromanjakub/skoly-msk/blob/main/docs/metodika.md">Metodika</a> · <a href="https://github.com/gromanjakub/skoly-msk">Zdrojový kód</a></footer>
 </main>
 <script>
 const LABEL = { ok: "dostupné", partial: "částečně", blocked: "nedostupné", pending: "zjišťuje se" };
@@ -110,18 +118,42 @@ fetch("status.json", { cache: "no-store" }).then(r => r.json()).then(s => {
 });
 
 const TYPES = ["G8", "G6", "G4", "lyceum", "SOŠ"];
+const BAND = { "2": ["++", "b2", "výrazně nad průměrem ČR"], "1": ["+", "b1", "nad průměrem ČR"], "0": ["○", "b0", "kolem průměru ČR"],
+  "-1": ["−", "bm1", "pod průměrem ČR"], "-2": ["−−", "bm2", "výrazně pod průměrem ČR"] };
+const bandCell = (b, z) => b === null || b === undefined ? `<span class="note">–</span>`
+  : `<span class="band ${BAND[b][1]}" title="${BAND[b][2]} (z = ${z})">${BAND[b][0]}</span>`;
+const n1 = v => v === null || v === undefined ? "–" : String(v).replace(".", ",");
+const sgn = v => v === null || v === undefined ? "–" : (v > 0 ? "+" : "") + n1(v);
 let schools = [], active = new Set();
 const fold = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+function detail(s, u) {
+  return `<tr class="det"><td colspan="7"><div class="detgrid">
+    <div><b>Přidaná hodnota (A)</b><br>${sgn(u.va)} percentilu v ČJ oproti očekávání podle přijímaček (${u.va_cohorts} ročníků)</div>
+    <div><b>Maturita (B)</b><br>ČJ průměrný percentil ${n1(u.cj_pct)}, uspělo ${n1(u.usp)} % přihlášených (2024–2026)</div>
+    <div><b>Zájem (E)</b><br>${n1(u.poptavka)} přihlášek 1. priority na místo, přijatí v průměru na ${n1(u.adm_pct)}. percentilu přijímaček (2024–2026)</div>
+    <div><b>Velikost</b><br>${n1(u.n)} maturantů ročně, skupiny oborů ${esc(u.smo16)}</div>
+  </div><div class="note">${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
+}
+let open = new Set();
 function renderSchools() {
   const q = fold(document.getElementById("q").value.trim());
-  const rows = schools.filter(s =>
-    (!q || fold(s.plny_nazev + " " + s.obec).includes(q)) &&
-    (!active.size || s.typy.some(t => active.has(t))));
-  document.getElementById("count").textContent = `Zobrazeno ${rows.length} z ${schools.length} škol`;
-  document.querySelector("#schools tbody").innerHTML = rows.map(s =>
-    `<tr><td title="${esc(s.plny_nazev)}">${esc(s.nazev)}</td><td>${esc(s.obec)}</td>
-     <td>${s.typy.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</td>
-     <td>${esc(s.zrizovatel)}</td><td class="w">${s.kapacita || "–"}</td></tr>`).join("");
+  let rows = [];
+  for (const s of schools) {
+    if (q && !fold(s.plny_nazev + " " + s.obec).includes(q)) continue;
+    const us = s.units.length ? s.units : [{ unit: s.typy.join(", "), missing: true }];
+    for (const u of us) if (!active.size || active.has(u.unit)) rows.push([s, u]);
+  }
+  if (document.getElementById("sortcomp").checked)
+    rows.sort((a, b) => (b[1].comp ?? -99) - (a[1].comp ?? -99));
+  document.getElementById("count").textContent = `Zobrazeno ${rows.length} řádků (škola × typ studia)`;
+  document.querySelector("#schools tbody").innerHTML = rows.map(([s, u]) => {
+    const key = s.red_izo + "|" + u.unit;
+    const cls = u.missing || !u.ok ? "dim" : "";
+    const b = u.bands || {};
+    const main = `<tr class="row ${cls}" data-k="${key}"><td>${esc(s.nazev)}</td><td>${esc(s.obec)}</td><td><span class="tag">${esc(u.unit)}</span></td>
+      <td>${bandCell(b.A, u.z?.A)}</td><td>${bandCell(b.B, u.z?.B)}</td><td>${bandCell(b.E, u.z?.E)}</td><td>${bandCell(u.comp_band, u.comp)}</td></tr>`;
+    return main + (open.has(key) && !u.missing ? detail(s, u) : "");
+  }).join("");
 }
 document.getElementById("chips").innerHTML = TYPES.map(t =>
   `<button class="chip" aria-pressed="false" data-t="${t}">${t}</button>`).join("");
@@ -132,7 +164,12 @@ document.getElementById("chips").addEventListener("click", e => {
   b.setAttribute("aria-pressed", on);
   renderSchools();
 });
+document.querySelector("#schools tbody").addEventListener("click", e => {
+  const r = e.target.closest("tr.row"); if (!r) return;
+  const k = r.dataset.k; open.has(k) ? open.delete(k) : open.add(k); renderSchools();
+});
 document.getElementById("q").addEventListener("input", renderSchools);
+document.getElementById("sortcomp").addEventListener("change", renderSchools);
 fetch("schools.json", { cache: "no-store" }).then(r => r.json()).then(d => { schools = d; renderSchools(); });
 </script>
 </body>
