@@ -56,6 +56,18 @@ for s in scores:
         "comp": round(comp, 2) if comp is not None else None, "comp_band": band(comp), "comp_pillars": sorted(have),
     })
 
+geo = {}
+for g in csv.DictReader(open(os.path.join(ROOT, "data/geo.csv"))):
+    if g["v_msk"] == "1" and g["lat"] and (g["red_izo"] not in geo or g["kind"] == "sidlo"):
+        geo[g["red_izo"]] = [round(float(g["lat"]), 5), round(float(g["lon"]), 5)]
+csi = {}
+for c in csv.DictReader(open(os.path.join(ROOT, "data/csi.csv"))):
+    prev = csi.get(c["red_izo"])
+    if c["report_date"] and (not prev or c["report_date"] > prev["datum"]):
+        csi[c["red_izo"]] = {"datum": c["report_date"], "url": c["report_url"], "silne": c["silne_stranky"],
+                             "slabe": c["slabe_stranky"], "doporuceni": c["doporuceni"],
+                             "n_zaku": int(c["n_zaku"]) if c["n_zaku"].isdigit() else None}
+
 out = []
 for rid, r in reg.items():
     if r["has_maturita"] != "1":
@@ -65,6 +77,7 @@ for rid, r in reg.items():
     out.append({"red_izo": rid, "nazev": (lambda d: d if len(d) >= 12 else (r["zkraceny_nazev"] or d))(display_name(r["nazev"])), "plny_nazev": r["nazev"],
                 "obec": r["obce_mist_vyuky_msk"] or r["obec"], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
                 "kapacita": int(r["maturita_denni_obory_kapacita"] or 0),
+                "geo": geo.get(rid), "csi": csi.get(rid),
                 "units": sorted(units.get(rid, []), key=lambda u: list(UNIT_LABEL.values()).index(u["unit"]))})
 out.sort(key=lambda x: (x["obec"], x["nazev"]))
 missing = [s["redizo"] for s in scores if s["redizo"] not in reg]

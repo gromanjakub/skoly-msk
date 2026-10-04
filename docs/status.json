@@ -85,13 +85,19 @@
       "name": "ČŠI – inspekční zprávy",
       "use": "Kvalitativní kontext, nebodováno",
       "status": "ok",
-      "note": "Zprávy dohledatelné pro 140 ze 142 škol. Volný text bez hodnocení."
+      "note": "Poslední zpráva pro 125 ze 126 škol (nejstarší z roku 2019). Silné a slabé stránky ukazujeme u školy, nebodujeme je: slabé stránky jsou skoro všude stejné a odpovídají spíš aktuálním prioritám ČŠI."
     },
     {
       "name": "InfoAbsolvent",
       "use": "Pilíř E (uchazeči na místo po oborech)",
       "status": "blocked",
       "note": "Staženo pro 124 škol, ale jde o horší kopii dat CERMAT o rok zpět. Nepoužito."
+    },
+    {
+      "name": "RÚIAN (ČÚZK)",
+      "use": "Mapa: souřadnice sídel a míst výuky",
+      "status": "ok",
+      "note": "316 z 317 adres."
     }
   ],
   "log": [
@@ -114,6 +120,10 @@
     {
       "date": "2026-10-04",
       "text": "Přidán pilíř C (excelence). InfoAbsolvent prověřen a zamítnut jako duplikát dat CERMAT."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "Mapa škol a výňatky z inspekčních zpráv ČŠI v detailu školy."
     }
   ]
 }
