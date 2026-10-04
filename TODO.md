@@ -17,12 +17,12 @@ Postup: po jednom bodu, bez paralelních agentů. 💰 = drahé (agent / scrapin
 - [x] `data/raw/web/` (115 škol) + `notes/web_batch1_part0*.md`: výroční zprávy. Zjistit, co se stihlo vytáhnout (počty žáků, odchody → pilíř F). → nestačí, viz `notes/vyrocni_zpravy_D_F.md`.
 
 ## Další kroky (podle priority)
-1. [ ] Vyhodnotit rozdělaná data výše, jedno po druhém
+1. [x] Vyhodnotit rozdělaná data výše (zbývá jen kraj_*.csv)
 2. [x] Pilíř D: z veřejných dat nejde. Zbývá jen žádost podle 106/1999 (viz níže).
 3. [ ] Pilíř F: výroční zprávy nestačí. odchody z výročních zpráv; jinak od 2028 hrubý odhad (přijatí 2024 → přihlášení k maturitě)
 4. [ ] Ručně: 8 nejasných názvů škol v olympiádách (`data/olymp_school_overrides.csv`)
 5. [ ] Ručně: ověřit 28 přepsaných výsledků jazykových olympiád, pak zapojit
-6. [ ] Nastavitelné váhy pilířů na stránce
+6. [x] Nastavitelné váhy pilířů na stránce (posuvníky A, B, C, E; přepočítá tabulku i mapu)
 7. [ ] Intervaly nejistoty / pásma podle velikosti školy
 8. [-] ~~💰 Dosbírat výroční zprávy~~: zrušeno, D/F z nich nejdou
 9. [ ] 💰 Náboj, Astronomická olympiáda do pilíře C
