@@ -12,6 +12,8 @@ Pásma: z ≥ 1 výrazně nad průměrem ČR, 0,33 až 1 nad, −0,33 až 0,33 k
 
 Pro každou skupinu oborů celostátně: vážená regrese průměrného percentilu školy v didaktickém testu z ČJ u maturity (roky 2022–2026) na průměrný percentil uchazečů o tutéž školu a skupinu oborů v ČJ a MA u přijímaček o 4 roky dřív (G6 o 6, G8 o 8 let). Přidaná hodnota = reziduum, tedy o kolik percentilů škola dopadla líp nebo hůř, než by odpovídalo jejím uchazečům. Shoda modelu (R²): G4 0,60, G6 0,43, G8 0,35, lycea 0,35, odborné skupiny 0,02–0,50 (`data/derived/va_fit.csv`).
 
+Stabilita: přidaná hodnota jednoho ročníku koreluje s následujícím ročníkem téže školy r = 0,40 (celá ČR, 4 566 dvojic; G8 0,63, G4 0,34). Jeden ročník je tedy hodně zašuměný. Průměr přes až 5 ročníků má odhadovanou spolehlivost kolem 0,77 (Spearman–Brown), proto se zobrazují jen pásma.
+
 Omezení: přijímačky do 2023 popisují **všechny uchazeče**, ne přijaté. Přijímačky 2021 byly u čtyřletých oborů dobrovolné. Maturita zahrnuje jen ty, kdo k ní došli. Škola, která slabší žáky během studia ztratí, vypadá lépe. To má zachytit pilíř F. Školy s velkým podílem žáků s jiným mateřským jazykem (mezinárodní, polské) jsou v ČJ znevýhodněné.
 
 ## B – výsledky maturity
