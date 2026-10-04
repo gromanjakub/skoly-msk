@@ -128,7 +128,14 @@ for g in {p[1] for p in pairs}:
     for p in pairs:
         if p[1] == g:
             resid[(p[0], g)].append((p[5] - (beta[0] + beta[1] * p[3] + beta[2] * p[4]), p[6], p[2]))
-va = {k: (wmean([(e, w) for e, w, _ in v])[0], len(v)) for k, v in resid.items()}
+# Shrink toward 0 by reliability. One cohort of median size (27 students) has year-to-year r = 0.40,
+# so per-student noise K = 27 * (1 - 0.4) / 0.4 ~ 40; reliability = N / (N + K), N = students over all cohorts.
+K_VA = 40
+va, va_rel = {}, {}
+for k, v in resid.items():
+    N = sum(w for _, w, _ in v)
+    va_rel[k] = N / (N + K_VA)
+    va[k] = (wmean([(e, w) for e, w, _ in v])[0] * va_rel[k], len(v))
 z_va = zscorer({g: [v for (s, gg), (v, c) in va.items() if gg == g] for g in {g for _, g in va}})
 
 # ---------- E: demand = first-priority applications per place, percentile of admitted ----------
@@ -168,6 +175,7 @@ for (s, g), (v, c) in va.items():
         w = school_group.get((s, g), {}).get("n_mz", 1)
         agg[(s, unit(g))]["va"].append((v, w)); agg[(s, unit(g))]["zA"].append((z_va(g, v), w))
         agg[(s, unit(g))]["va_cohorts"].append((c, 1))
+        agg[(s, unit(g))]["va_rel"].append((va_rel[(s, g)], w))
 for (s, g), v in e_val.items():
     if s in msk:
         w = e[(s, g)]["kap"] or 1
@@ -181,7 +189,7 @@ out = []
 for (s, u), d in sorted(agg.items()):
     row = {"redizo": s, "nazev": names.get(s, ""), "unit": u, "smo16": " ".join(sorted(set(d["groups"])))}
     row["n_mz_per_year"] = round(sum(v for v, _ in d["n_mz"]), 1) if d["n_mz"] else 0
-    for k in ("cj_pct", "usp", "va", "poptavka", "adm_pct", "zA", "zB", "zE"):
+    for k in ("cj_pct", "usp", "va", "va_rel", "poptavka", "adm_pct", "zA", "zB", "zE"):
         v, _ = wmean(d[k])
         row[k] = round(v, 3) if v is not None else ""
     row["va_cohorts"] = max((v for v, _ in d["va_cohorts"]), default=0)

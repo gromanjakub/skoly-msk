@@ -161,7 +161,7 @@ function drawWeights() {
 const fold = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 function detail(s, u) {
   return `<tr class="det"><td colspan="8"><div class="detgrid">
-    <div><b>Přidaná hodnota (A)</b><br>${sgn(u.va)} percentilu v ČJ oproti očekávání podle přijímaček (${u.va_cohorts} ročníků)</div>
+    <div><b>Přidaná hodnota (A)</b><br>${sgn(u.va)} percentilu v ČJ oproti očekávání podle přijímaček (${u.va_cohorts} ročníků, spolehlivost ${n1(u.va_rel)})</div>
     <div><b>Maturita (B)</b><br>ČJ průměrný percentil ${n1(u.cj_pct)}, uspělo ${n1(u.usp)} % přihlášených (2024–2026)</div>
     <div><b>Excelence (C)</b><br>${n1(u.c_index)} bodu ročně na 100 žáků; ${u.c_nat ?? 0} účastí v celostátních kolech, ${u.c_reg_succ ?? 0} úspěšných v krajských kolech (2021/22–2025/26, celá škola)</div>
     <div><b>Zájem (E)</b><br>${n1(u.poptavka)} přihlášek 1. priority na místo, přijatí v průměru na ${n1(u.adm_pct)}. percentilu přijímaček (2024–2026)</div>

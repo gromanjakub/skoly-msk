@@ -150,6 +150,10 @@
     {
       "date": "2026-10-04",
       "text": "Váhy pilířů jdou nastavit posuvníky. U škol s více pracovišti se ukazuje obec sídla a počet dalších míst výuky."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "Přidaná hodnota malých škol se stahuje k průměru podle spolehlivosti. Do pilíře C zapojeny přepsané jazykové olympiády (namátkově ověřeno) a ručně dořešené názvy škol."
     }
   ]
 }

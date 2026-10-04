@@ -3,7 +3,8 @@
 Points per result (team result counts once):
   national round: placed 1st-3rd 5, successful solver 3, other participant 1.5
   regional round (MO, FO, ChO, BiO, informatics): successful 0.5, other participant 0.2
-Rows transcribed from images (language olympiads 2023-25) are left out until checked.
+Rows transcribed from images (language olympiads 2023-25) are included: 3 of 3 spot checks against
+the original sheets matched (FJ SŠ 2024, NJ SŠ 2024, ŠJ ZŠ/VG II 2025).
 School size = maturita candidates per year (all study types) x 4 upper-secondary years.
 z-scores are within MSK only (no national competition data): gymnázia (G8/G6/G4) and
 others (lyceum, SOŠ) separately, on log(1 + points per year per 100 students).
@@ -29,7 +30,7 @@ def points(r):
 pts = defaultdict(float)
 cnt = defaultdict(lambda: defaultdict(int))
 for r in csv.DictReader(open(os.path.join(ROOT, "data/olymp_msk_matched.csv"))):
-    if not r["red_izo"] or r["source_quality"] == "transcribed":
+    if not r["red_izo"]:
         continue
     pts[r["red_izo"]] += points(r)
     key = "nat" if r["round"] == "ustredni" else ("reg_succ" if r["successful"] == "true" else "reg")

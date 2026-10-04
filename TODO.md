@@ -1,6 +1,6 @@
 # TODO
 
-Postup: po jednom bodu, bez paralelních agentů. 💰 = drahé (agent / scraping), ostatní je práce nad daty, která už leží na disku.
+💰 = drahé (agent / scraping), ostatní je práce nad daty, která už leží na disku.
 
 ## Hotovo
 - [x] Rejstřík škol (126 maturitních škol), mapa (RÚIAN)
@@ -20,10 +20,10 @@ Postup: po jednom bodu, bez paralelních agentů. 💰 = drahé (agent / scrapin
 1. [x] Vyhodnotit rozdělaná data výše (zbývá jen kraj_*.csv)
 2. [x] Pilíř D: z veřejných dat nejde. Zbývá jen žádost podle 106/1999 (viz níže).
 3. [ ] Pilíř F: výroční zprávy nestačí. odchody z výročních zpráv; jinak od 2028 hrubý odhad (přijatí 2024 → přihlášení k maturitě)
-4. [ ] Ručně: 8 nejasných názvů škol v olympiádách (`data/olymp_school_overrides.csv`)
-5. [ ] Ručně: ověřit 28 přepsaných výsledků jazykových olympiád, pak zapojit
+4. [x] Ručně: 8 nejasných názvů škol v olympiádách (`data/olymp_school_overrides.csv`): Frenštát přiřazen, 3× ZŠ, „SPŠ Ostrava" a „POJ F-M" neidentifikovatelné
+5. [x] Ověřit 28 přepsaných výsledků jazykových olympiád: 3/3 namátkově sedí, zapojeno
 6. [x] Nastavitelné váhy pilířů na stránce (posuvníky A, B, C, E; přepočítá tabulku i mapu)
-7. [ ] Intervaly nejistoty / pásma podle velikosti školy
+7. [x] Nejistota: přidaná hodnota stažená k průměru podle spolehlivosti N/(N+40), spolehlivost v detailu
 8. [-] ~~💰 Dosbírat výroční zprávy~~: zrušeno, D/F z nich nejdou
 9. [ ] 💰 Náboj, Astronomická olympiáda do pilíře C
 11. [ ] Žádost na MŠMT podle 106/1999: počty žáků po ročnících a školách (F) a přechod absolventů na VŠ podle SŠ (D, z SIMS/matriky). Musí poslat Jakub.

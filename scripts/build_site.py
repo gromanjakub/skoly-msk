@@ -49,7 +49,7 @@ for s in scores:
     comp = (sum(WEIGHTS[k] * v for k, v in have.items()) / sum(WEIGHTS[k] for k in have)) if ok and len(have) >= 2 else None
     units.setdefault(s["redizo"], []).append({
         "unit": UNIT_LABEL[s["unit"]], "smo16": s["smo16"], "n": fnum(s["n_mz_per_year"], 0), "ok": ok,
-        "cj_pct": fnum(s["cj_pct"]), "usp": fnum(s["usp"]), "va": fnum(s["va"]), "va_cohorts": int(s["va_cohorts"] or 0),
+        "cj_pct": fnum(s["cj_pct"]), "usp": fnum(s["usp"]), "va": fnum(s["va"]), "va_rel": fnum(s["va_rel"], 2), "va_cohorts": int(s["va_cohorts"] or 0),
         "poptavka": fnum(s["poptavka"], 2), "adm_pct": fnum(s["adm_pct"]),
         **ex.get("detail", {}),
         "z": z, "bands": {k: band(v) if ok else None for k, v in z.items()},
