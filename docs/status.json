@@ -31,7 +31,7 @@
       "weight": 15,
       "what": "Přijetí na VŠ; u odborných škol nezaměstnanost absolventů",
       "status": "blocked",
-      "note": "Přijetí na VŠ po školách veřejně není. Nezaměstnanost absolventů NPI zveřejňuje jen po krajích a oborech, ne po školách."
+      "note": "Ani výroční zprávy nestačí: údaj o přijetí na VŠ má jen 11 škol, skoro samá gymnázia s 84–100 %. Ukazujeme ho jako údaj školy, nebodujeme."
     },
     {
       "id": "E",
@@ -47,7 +47,7 @@
       "weight": 10,
       "what": "Podíl nastoupivšího ročníku, který dojde k maturitě v řádném termínu",
       "status": "blocked",
-      "note": "Počty žáků po ročnících se po školách nezveřejňují. Hrubý odhad půjde od roku 2028 z počtu přijatých (2024) a přihlášených k maturitě."
+      "note": "Výroční zprávy odchody žáků jako počty skoro neuvádějí. Zbývá žádost na MŠMT (matrika žáků), nebo od 2028 odhad z dat CERMAT."
     }
   ],
   "sources": [
@@ -98,6 +98,24 @@
       "use": "Mapa: souřadnice sídel a míst výuky",
       "status": "ok",
       "note": "316 z 317 adres."
+    },
+    {
+      "name": "Výroční zprávy škol",
+      "use": "Pilíř D, F, kontext",
+      "status": "partial",
+      "note": "Dokumenty ze 115 škol, sběr nedokončen. Na D ani F nestačí."
+    },
+    {
+      "name": "Monitor státní pokladny, MSK",
+      "use": "Kontext: náklady, investice kraje",
+      "status": "ok",
+      "note": "82 škol zřizovaných krajem, 2022–2025. Nebodováno."
+    },
+    {
+      "name": "Program Excelence SŠ (MŠMT)",
+      "use": "Kontrola pilíře C",
+      "status": "partial",
+      "note": "Jen 2013–2019. Shoda s naším pilířem C r = 0,79."
     }
   ],
   "log": [
@@ -124,6 +142,10 @@
     {
       "date": "2026-10-04",
       "text": "Mapa škol a výňatky z inspekčních zpráv ČŠI v detailu školy."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "V detailu školy hospodaření a vlastní údaj školy o přijetí na VŠ. Pilíř C ověřen proti programu Excelence (r = 0,79). D a F z výročních zpráv nejdou."
     }
   ]
 }

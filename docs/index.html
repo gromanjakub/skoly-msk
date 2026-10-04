@@ -142,7 +142,16 @@ function detail(s, u) {
     <div><b>Excelence (C)</b><br>${n1(u.c_index)} bodu ročně na 100 žáků; ${u.c_nat ?? 0} účastí v celostátních kolech, ${u.c_reg_succ ?? 0} úspěšných v krajských kolech (2021/22–2025/26, celá škola)</div>
     <div><b>Zájem (E)</b><br>${n1(u.poptavka)} přihlášek 1. priority na místo, přijatí v průměru na ${n1(u.adm_pct)}. percentilu přijímaček (2024–2026)</div>
     <div><b>Velikost</b><br>${n1(u.n)} maturantů ročně, skupiny oborů ${esc(u.smo16)}</div>
-  </div>${csiBlock(s)}<div class="note">${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
+  </div>${extraBlock(s)}${csiBlock(s)}<div class="note">${esc(s.plny_nazev)} · RED_IZO ${s.red_izo} · zřizovatel: ${esc(s.zrizovatel)}</div></td></tr>`;
+}
+function extraBlock(s) {
+  const f = s.fin, v = s.vs_claim, parts = [];
+  if (f) {
+    const per = s.csi?.n_zaku ? `, tj. asi ${Math.round(f.naklady_mil * 1000 / s.csi.n_zaku)} tis. Kč na žáka (počet žáků podle ČŠI, celá škola)` : "";
+    parts.push(`<b>Hospodaření ${f.rok}:</b> náklady ${n1(f.naklady_mil)} mil. Kč, z toho ${f.osobni_pct} % osobní náklady${per}. Investice kraje 2022–2025: ${n1(f.investice_mil)} mil. Kč.`);
+  }
+  if (v) parts.push(`<b>Podle školy:</b> z absolventů ${esc(v.rocnik)} přijato na VŠ ${v.podil} % (<a href="${esc(v.url)}" target="_blank" rel="noopener">zdroj</a>, údaj školy, neověřeno).`);
+  return parts.length ? `<div class="csi">${parts.map(p => `<p>${p}</p>`).join("")}</div>` : "";
 }
 function csiBlock(s) {
   const c = s.csi; if (!c) return "";

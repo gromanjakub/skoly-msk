@@ -68,6 +68,30 @@ for c in csv.DictReader(open(os.path.join(ROOT, "data/csi.csv"))):
                              "slabe": c["slabe_stranky"], "doporuceni": c["doporuceni"],
                              "n_zaku": int(c["n_zaku"]) if c["n_zaku"].isdigit() else None}
 
+fin = {}
+for f in csv.DictReader(open(os.path.join(ROOT, "data/finance.csv"))):
+    y = int(f["year"])
+    if f["metric"] in ("costs_total", "personnel_costs") and y >= fin.get(f["red_izo"], {}).get("rok", 0):
+        d = fin.setdefault(f["red_izo"], {})
+        if y > d.get("rok", 0):
+            d.clear(); d["rok"] = y
+        d[f["metric"]] = float(f["value"])
+invest = {}
+for f in csv.DictReader(open(os.path.join(ROOT, "data/kraj_investice.csv"))):
+    if f["red_izo"] and f["vydaje_v_roce_tis_kc"]:
+        invest[f["red_izo"]] = invest.get(f["red_izo"], 0) + float(f["vydaje_v_roce_tis_kc"])
+vs_claim = {}
+vsr = {}
+for f in csv.DictReader(open(os.path.join(ROOT, "data/vs_admissions_vyrocni_zpravy.csv"))):
+    vsr.setdefault((f["red_izo"], f["cohort"]), {})[f["metric"]] = f
+for (rid, coh), m in sorted(vsr.items()):
+    if "n_admitted_vs" in m and "n_graduates" in m:
+        try:
+            share = round(100 * float(m["n_admitted_vs"]["value"]) / float(m["n_graduates"]["value"]))
+        except (ValueError, ZeroDivisionError):
+            continue
+        vs_claim[rid] = {"rocnik": coh, "podil": share, "url": m["n_admitted_vs"]["source_url"]}
+
 out = []
 for rid, r in reg.items():
     if r["has_maturita"] != "1":
@@ -77,7 +101,11 @@ for rid, r in reg.items():
     out.append({"red_izo": rid, "nazev": (lambda d: d if len(d) >= 12 else (r["zkraceny_nazev"] or d))(display_name(r["nazev"])), "plny_nazev": r["nazev"],
                 "obec": r["obce_mist_vyuky_msk"] or r["obec"], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
                 "kapacita": int(r["maturita_denni_obory_kapacita"] or 0),
-                "geo": geo.get(rid), "csi": csi.get(rid),
+                "geo": geo.get(rid), "csi": csi.get(rid), "vs_claim": vs_claim.get(rid),
+                "fin": ({"rok": fin[rid]["rok"], "naklady_mil": round(fin[rid]["costs_total"] / 1e6, 1),
+                         "osobni_pct": round(100 * fin[rid].get("personnel_costs", 0) / fin[rid]["costs_total"]),
+                         "investice_mil": round(invest.get(rid, 0) / 1000, 1)}
+                        if rid in fin and fin[rid].get("costs_total") else None),
                 "units": sorted(units.get(rid, []), key=lambda u: list(UNIT_LABEL.values()).index(u["unit"]))})
 out.sort(key=lambda x: (x["obec"], x["nazev"]))
 missing = [s["redizo"] for s in scores if s["redizo"] not in reg]
