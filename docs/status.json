@@ -1,22 +1,97 @@
 {
   "updated": "2026-10-04",
   "pillars": [
-    {"id": "A", "name": "Přidaná hodnota", "weight": 30, "what": "Výsledky maturity vzhledem k výsledkům přijímaček téhož ročníku o čtyři roky dřív", "status": "pending", "note": "Zjišťuje se, co CERMAT zveřejňuje po školách"},
-    {"id": "B", "name": "Výsledky na výstupu", "weight": 20, "what": "Úspěšnost a percentily v didaktických testech maturity, včetně žáků, kteří k maturitě nedošli", "status": "pending", "note": "Zjišťuje se"},
-    {"id": "C", "name": "Excelence", "weight": 15, "what": "Úspěchy v celostátních kolech olympiád, SOČ a Eurorebusu na 100 žáků", "status": "pending", "note": "Sbírají se výsledkové listiny"},
-    {"id": "D", "name": "Kam absolventi jdou", "weight": 15, "what": "Přijetí na VŠ; u odborných škol nezaměstnanost absolventů", "status": "pending", "note": "Zjišťuje se"},
-    {"id": "E", "name": "Zájem o školu", "weight": 10, "what": "Počet uchazečů na místo, minimální bodový zisk přijatých", "status": "pending", "note": "Zjišťuje se"},
-    {"id": "F", "name": "Udržení žáků", "weight": 10, "what": "Podíl nastoupivšího ročníku, který dojde k maturitě v řádném termínu", "status": "pending", "note": "Zjišťuje se"}
+    {
+      "id": "A",
+      "name": "Přidaná hodnota",
+      "weight": 30,
+      "what": "Výsledky maturity vzhledem k výsledkům přijímaček téhož ročníku o čtyři roky dřív",
+      "status": "partial",
+      "note": "Jen za celý ročník: přijímačky v roce R proti maturitě v roce R+4 (u osmiletých R+8). Jednotlivé žáky z veřejných dat propojit nejde."
+    },
+    {
+      "id": "B",
+      "name": "Výsledky na výstupu",
+      "weight": 20,
+      "what": "Úspěšnost a percentily v didaktických testech maturity, včetně žáků, kteří k maturitě nedošli",
+      "status": "ok",
+      "note": "CERMAT, 2015–2026, po školách i skupinách oborů. Jen první pokus a jen státní část maturity."
+    },
+    {
+      "id": "C",
+      "name": "Excelence",
+      "weight": 15,
+      "what": "Úspěchy v celostátních kolech olympiád, SOČ a Eurorebusu na 100 žáků",
+      "status": "pending",
+      "note": "Sbírají se výsledkové listiny"
+    },
+    {
+      "id": "D",
+      "name": "Kam absolventi jdou",
+      "weight": 15,
+      "what": "Přijetí na VŠ; u odborných škol nezaměstnanost absolventů",
+      "status": "pending",
+      "note": "Zjišťuje se"
+    },
+    {
+      "id": "E",
+      "name": "Zájem o školu",
+      "weight": 10,
+      "what": "Počet uchazečů na místo, minimální bodový zisk přijatých",
+      "status": "partial",
+      "note": "Kapacity, uchazeči na místo a body přijatých až od roku 2024. Za 2017–2023 jen průměrný percentil všech uchazečů."
+    },
+    {
+      "id": "F",
+      "name": "Udržení žáků",
+      "weight": 10,
+      "what": "Podíl nastoupivšího ročníku, který dojde k maturitě v řádném termínu",
+      "status": "pending",
+      "note": "Zjišťuje se"
+    }
   ],
   "sources": [
-    {"name": "Rejstřík škol MŠMT", "use": "Seznam škol v kraji, obory, identifikátory", "status": "pending"},
-    {"name": "CERMAT – maturita po školách", "use": "Pilíř A, B", "status": "pending"},
-    {"name": "CERMAT / DiPSy – přijímačky", "use": "Pilíř A, E", "status": "pending"},
-    {"name": "Olympiády, SOČ, Eurorebus", "use": "Pilíř C", "status": "pending"},
-    {"name": "NPI – nezaměstnanost absolventů", "use": "Pilíř D", "status": "pending"},
-    {"name": "ČŠI – inspekční zprávy", "use": "Kvalitativní kontext, nebodováno", "status": "pending"}
+    {
+      "name": "Rejstřík škol MŠMT",
+      "use": "Seznam škol v kraji, obory, identifikátory",
+      "status": "pending"
+    },
+    {
+      "name": "CERMAT – maturita po školách",
+      "use": "Pilíř A, B",
+      "status": "ok",
+      "note": "Tabulky XLSX za 2015–2026, škola podle RED_IZO. V MSK 119–126 škol ročně. Licence neuvedena, opětovné použití ověříme u CERMATu."
+    },
+    {
+      "name": "CERMAT / DiPSy – přijímačky",
+      "use": "Pilíř A, E",
+      "status": "ok",
+      "note": "Podrobně 2024–2026 (kapacity, přihlášky, body přijatých), 2017–2023 jen průměrné percentily uchazečů."
+    },
+    {
+      "name": "Olympiády, SOČ, Eurorebus",
+      "use": "Pilíř C",
+      "status": "pending"
+    },
+    {
+      "name": "NPI – nezaměstnanost absolventů",
+      "use": "Pilíř D",
+      "status": "pending"
+    },
+    {
+      "name": "ČŠI – inspekční zprávy",
+      "use": "Kvalitativní kontext, nebodováno",
+      "status": "pending"
+    }
   ],
   "log": [
-    {"date": "2026-10-04", "text": "Založení stránky. Metodika v pracovní verzi, zjišťuje se dostupnost dat."}
+    {
+      "date": "2026-10-04",
+      "text": "Založení stránky. Metodika v pracovní verzi, zjišťuje se dostupnost dat."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "CERMAT: maturita i přijímačky jsou po školách volně ke stažení. Pilíř B pokrytý, A a E částečně."
+    }
   ]
 }
