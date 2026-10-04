@@ -94,12 +94,6 @@
       "note": "Staženo pro 124 škol, ale jde o horší kopii dat CERMAT o rok zpět. Nepoužito."
     },
     {
-      "name": "RÚIAN (ČÚZK)",
-      "use": "Mapa: souřadnice sídel a míst výuky",
-      "status": "ok",
-      "note": "316 z 317 adres."
-    },
-    {
       "name": "Výroční zprávy škol",
       "use": "Pilíř D, F, kontext",
       "status": "partial",
@@ -162,6 +156,10 @@
     {
       "date": "2026-10-04",
       "text": "Doplněny 3 školy, které mají maturitu jen v nástavbovém studiu. U malých a nových oborů se ukazují aspoň pilíře C a E. U škol se sídlem mimo MSK je vysvětleno, proč chybí A a B."
+    },
+    {
+      "date": "2026-10-04",
+      "text": "Mapa odstraněna."
     }
   ]
 }

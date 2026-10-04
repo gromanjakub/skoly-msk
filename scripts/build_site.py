@@ -103,7 +103,7 @@ for rid, r in reg.items():
                 "mista": [o.strip() for o in r["obce_mist_vyuky_msk"].split(";") if o.strip()], "zrizovatel": r["typ_zrizovatele_txt"], "typy": t,
                 "kapacita": int(r["maturita_denni_obory_kapacita"] or 0),
                 "mimo": r["kraj_sidla"] if r["sidlo_mimo_msk"] == "1" else None,
-                "geo": geo.get(rid), "csi": csi.get(rid), "vs_claim": vs_claim.get(rid),
+                "csi": csi.get(rid), "vs_claim": vs_claim.get(rid),
                 "fin": ({"rok": fin[rid]["rok"], "naklady_mil": round(fin[rid]["costs_total"] / 1e6, 1),
                          "osobni_pct": round(100 * fin[rid].get("personnel_costs", 0) / fin[rid]["costs_total"]),
                          "investice_mil": round(invest.get(rid, 0) / 1000, 1)}

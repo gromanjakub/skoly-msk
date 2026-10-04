@@ -49,15 +49,12 @@ tr.row { cursor: pointer; } tr.row:hover td { background: var(--card); } tr.dim 
 tr.det td { background: var(--card); }
 .detgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; font-size: .88rem; margin-bottom: 6px; }
 footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
-#map { height: 420px; border: 1px solid var(--line); border-radius: 6px; margin: 8px 0; }
 .csi { font-size: .85rem; margin: 6px 0; } .csi p { margin: 4px 0; }
-.legend span { margin-right: 10px; white-space: nowrap; }
 .weights { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .85rem; margin: 6px 0; align-items: center; }
 .weights label { display: flex; align-items: center; gap: 6px; }
 .weights input { width: 90px; } .weights output { font-variant-numeric: tabular-nums; min-width: 2.5em; }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
 </head>
 <body>
 <main>
@@ -82,10 +79,6 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
     <li>Zveřejňují se všechny dílčí ukazatele, ne jen výsledné číslo.</li>
     <li>Nezveřejňují se jména žáků.</li>
   </ul>
-
-  <h2>Mapa</h2>
-  <p class="note legend">Barva podle nejlepšího předběžného souhrnu školy: <span class="band b2">++</span><span class="band b1">+</span><span class="band b0">○</span><span class="band bm1">−</span><span class="band bm2">−−</span> šedá = bez hodnocení. Sídlo školy, případně první místo výuky v MSK.</p>
-  <div id="map"></div>
 
   <h2>Školy</h2>
   <p class="note">Každá škola je rozdělená podle typu studia (G8, G6, G4, lyceum, SOŠ) a srovnává se se stejným typem v celé ČR. Pásma: <span class="band b2">++</span> výrazně nad průměrem ČR, <span class="band b1">+</span> nad průměrem, <span class="band b0">○</span> kolem průměru, <span class="band bm1">−</span> pod průměrem, <span class="band bm2">−−</span> výrazně pod průměrem. Kliknutím na řádek zobrazíte čísla.</p>
@@ -155,7 +148,7 @@ function drawWeights() {
   document.getElementById("weights").addEventListener("input", e => {
     const k = e.target.dataset.k; if (!k) return;
     W[k] = +e.target.value; e.target.nextElementSibling.textContent = W[k];
-    recompute(); renderSchools(); paintMap();
+    recompute(); renderSchools();
   });
 }
 const fold = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -182,32 +175,6 @@ function csiBlock(s) {
   const cut = t => esc(t.length > 400 ? t.slice(0, 400) + "…" : t);
   return `<div class="csi"><b>Česká školní inspekce</b> (zpráva ${fmtDate(c.datum)}, <a href="${esc(c.url)}" target="_blank" rel="noopener">PDF</a>${c.n_zaku ? `, ${c.n_zaku} žáků` : ""})
     ${c.silne ? `<p><i>Silné stránky:</i> ${cut(c.silne)}</p>` : ""}${c.slabe ? `<p><i>Slabé stránky:</i> ${cut(c.slabe)}</p>` : ""}</div>`;
-}
-const BCOL = { "2": "--g2", "1": "--g1", "0": "--line", "-1": "--r1", "-2": "--r2" };
-let markers = [];
-function paintMap() {
-  const css = getComputedStyle(document.documentElement);
-  for (const [s, m] of markers) {
-    const scored = s.units.filter(u => u.comp_band !== null && u.comp_band !== undefined);
-    const best = scored.length ? Math.max(...scored.map(u => u.comp_band)) : null;
-    m.setStyle({ fillColor: best === null ? "#9a9994" : css.getPropertyValue(BCOL[best]).trim() });
-    m.setPopupContent(`<b>${esc(s.nazev)}</b><br>${s.units.map(u => `${esc(u.unit)}: ${u.comp_band === null || u.comp_band === undefined ? "–" : BAND[u.comp_band][0]}`).join(" · ")}`);
-  }
-}
-function drawMap() {
-  if (!window.L) return;
-  const css = getComputedStyle(document.documentElement);
-  const map = L.map("map", { scrollWheelZoom: false }).setView([49.82, 18.0], 9);
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 17,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
-  for (const s of schools) {
-    if (!s.geo) continue;
-    const scored = s.units.filter(u => u.comp_band !== null && u.comp_band !== undefined);
-    const best = scored.length ? Math.max(...scored.map(u => u.comp_band)) : null;
-    const col = best === null ? "#9a9994" : css.getPropertyValue(BCOL[best]).trim();
-    const m = L.circleMarker(s.geo, { radius: 7, color: "#333", weight: 1, fillColor: col, fillOpacity: .9 }).bindPopup("").addTo(map);
-    markers.push([s, m]);
-  }
 }
 let open = new Set();
 function renderSchools() {
@@ -245,7 +212,7 @@ document.querySelector("#schools tbody").addEventListener("click", e => {
 });
 document.getElementById("q").addEventListener("input", renderSchools);
 document.getElementById("sortalpha").addEventListener("change", renderSchools);
-fetch("schools.json", { cache: "no-store" }).then(r => r.json()).then(d => { schools = d; recompute(); drawWeights(); renderSchools(); drawMap(); paintMap(); });
+fetch("schools.json", { cache: "no-store" }).then(r => r.json()).then(d => { schools = d; recompute(); drawWeights(); renderSchools(); });
 </script>
 </body>
 </html>
