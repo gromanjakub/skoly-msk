@@ -89,7 +89,7 @@ footer { margin-top: 48px; color: var(--muted); font-size: .85rem; }
   <div class="filters">
     <input id="q" type="search" placeholder="Hledat školu nebo obec" aria-label="Hledat">
     <span id="chips"></span>
-    <label class="note"><input type="checkbox" id="sortcomp"> seřadit podle souhrnu</label>
+    <label class="note"><input type="checkbox" id="sortalpha"> abecedně podle obce</label>
   </div>
   <p class="note" id="count"></p>
   <div class="wrap"><table id="schools">
@@ -176,7 +176,7 @@ function renderSchools() {
     const us = s.units.length ? s.units : [{ unit: s.typy.join(", "), missing: true }];
     for (const u of us) if (!active.size || active.has(u.unit)) rows.push([s, u]);
   }
-  if (document.getElementById("sortcomp").checked)
+  if (!document.getElementById("sortalpha").checked)
     rows.sort((a, b) => (b[1].comp ?? -99) - (a[1].comp ?? -99));
   document.getElementById("count").textContent = `Zobrazeno ${rows.length} řádků (škola × typ studia)`;
   document.querySelector("#schools tbody").innerHTML = rows.map(([s, u]) => {
@@ -202,7 +202,7 @@ document.querySelector("#schools tbody").addEventListener("click", e => {
   const k = r.dataset.k; open.has(k) ? open.delete(k) : open.add(k); renderSchools();
 });
 document.getElementById("q").addEventListener("input", renderSchools);
-document.getElementById("sortcomp").addEventListener("change", renderSchools);
+document.getElementById("sortalpha").addEventListener("change", renderSchools);
 fetch("schools.json", { cache: "no-store" }).then(r => r.json()).then(d => { schools = d; renderSchools(); drawMap(); });
 </script>
 </body>
