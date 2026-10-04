@@ -35,3 +35,4 @@
 
 12. [ ] Sekce „Historie" (mimo hodnocení): úspěchy v celostátních kolech 2010/11–2020/21. Sbírá agent → `data/historie.csv`, `notes/historie.md`.
 13. [ ] Mezery v pilíři C: jazykové olympiády před 2023/24, celé výsledky olympiády v ČJ, krajská kola EO/ZO/DO/jazyků (viz `notes/olympiady.md`).
+14. [ ] Excelence result tables (`excelence.nidm.cz/result-table/show/N`, ~980 Wayback captures): school IČO + placement for every competition, no year. Could fill the history and matching gaps. Fetcher in `scripts/historie_sci.py`, stopped when Wayback went offline (12 saved). See `notes/historie_sci.md`.
